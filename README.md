@@ -26,8 +26,9 @@ Please free configure .env your app and run the command like below
 
 After you create migration, please ensure your database like below  
 
-*__user login__*: email on below  
-*__user password__: _interact_*  
+__user login__: email on below  
+__user password__: _interact_
+
 ![data email](https://github.com/moviet/laravel-interact/blob/master/public/img/data-email.png?raw=true)
 
 
