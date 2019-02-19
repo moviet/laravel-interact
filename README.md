@@ -63,7 +63,7 @@ After you create migration, please ensure your database like below
 - Handle JSON
 - Javascript
 - AJAX
-- [Contribution](#contribution-&#9996)
+- [Contribution](#contribution)
 - [Testing](#testing)
 - Etc
 
