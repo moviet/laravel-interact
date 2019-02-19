@@ -34,20 +34,20 @@ After you create migration, please ensure your database like below
 
 ## Custom Features
 
-- [Authorization](https://github.com/moviet/laravel-interact)
+- [Authorization](#custom-api)
 - Authentication
 - Validation
 - Verification
 - Notification
 - Email
-- Modify Models
+- Custom Models
 - Database Relations
 - Query Builder
 - Styling Route
 - API
-  - [Resources API](https://github.com/moviet/laravel-interact)
-  - [Separation API](https://github.com/moviet/laravel-interact)
-  - [Custom API](https://github.com/moviet/laravel-interact)
+  - [Resources API](#custom-api)
+  - [Separation API](#custom-api)
+  - [Custom API](#custom-api)
 - Console
 - Stub
 - Session
@@ -63,12 +63,12 @@ After you create migration, please ensure your database like below
 - Handle JSON
 - Javascript
 - AJAX
-- Contributions
+- [Contribution](#contribution-&#9996)
 - [Testing](#testing)
 - Etc
 
 ## Custom API
-You don't need to run basic _api_ like eg. http://localhost/api/ please see  
+You don't need to run basic _api_ like eg. [http://localhost/api/](#custom-features) please see  
 
 > *php artisan route:list*
 
