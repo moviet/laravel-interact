@@ -26,8 +26,8 @@ Please free configure .env your app and run the command like below
 
 After you create migration, please ensure your database like below  
 
-__user login__: email on below  
-__user password__: _interact_
+- __user-login__ : on below  
+- __user-password__ : _interact_
 
 ![data email](https://github.com/moviet/laravel-interact/blob/master/public/img/data-email.png?raw=true)
 
@@ -82,14 +82,14 @@ You don't need to run basic _api_ like eg. http://localhost/api/ please see
 Welcome for any contributions, please **Pull** request manually  
 #### &#9733; __Create New Trait__
 
-Feel free to contribute by create __new trait__ like command on below  
+Feel free to contribute by create __new trait__ with command on below  
 
 > *php artisan [make:contrib](https://github.com/moviet/laravel-interact) yourname/traitname*
 
 
 #### &#9733; __Create New Class__
 
-Feel free to contribute by create __new class__, please use ``--c`` like command on below  
+Feel free to contribute by create __new class__, please use ``--c`` with command on below  
 
 > *php artisan [make:contrib](https://github.com/moviet/laravel-interact) yourname/classname --c*
 
