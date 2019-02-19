@@ -1,0 +1,14 @@
+language: php
+
+php:
+  - 7.3
+ 
+before_install:
+- composer self-update
+
+before_script:
+- cp .env.travis .env
+- mysql -e 'create database testing;'
+- composer install --no-interaction
+- php artisan key:generate
+- php artisan migrate:refresh --seed

@@ -1,0 +1,16 @@
+<?php
+
+namespace DummyNamespace;
+
+trait DummyTraits
+{
+    /**
+     * Create a new contribs resources.
+     *
+     * @return void
+     */
+    public function methodNames()
+    {
+        //
+    }
+}

@@ -1,0 +1,18 @@
+<?php
+
+namespace DummyNamespace;
+
+use NamespacedDummyModel;
+
+class DummyScope
+{
+    /**
+     * Create a new scope instance.
+     *
+     * @return void
+     */
+    public function findById()
+    {
+        //
+    }
+}
