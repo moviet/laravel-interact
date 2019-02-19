@@ -4,7 +4,8 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://doge.mit-license.org)
 [![Usage](https://img.shields.io/badge/tutorial-basic-brightgreen.svg)](https://github.com/moviet/laravel-interact)
 
-**__Interact__** is a simple [*social media website*](https://facebook.com) like (eg. *__facebook__*, *twitter*, etc) built using _[__Laravel version 5.7__](https://github.com/laravel/laravel)_ the purposes is just for learning a good project development practices using php laravel framework for teamwork or individual developer
+**__Interact__** is a simple [*social media website*](https://facebook.com) like (eg. *__facebook__*, *twitter*, etc) built using _[__Laravel version 5.7__](https://github.com/laravel/laravel)_ the purposes is just for learning a good project development practices using php laravel framework for teamwork or individual developer,  
+you are free to create your own project by learning this sample source codes
 
 ## Quick Installation
 
@@ -17,12 +18,20 @@ Please free configure .env your app and run the command like below
 *  php artisan optimize
 *  php artisan [migrate:refresh --seed](https://github.com/moviet/laravel-interact)
 *  php artisan serve 
-*  see your database
-*  *__user password__: _interact_*
 *  run localhost:8000
 *  welcome to interact
 
 > *configuration file .env (up your choices) please see basic tutorial on laravel.com*
+
+## Data Builtin
+
+After you create migration, please ensure your database like below  
+
+*__user login__*
+
+![data email](https://github.com/moviet/laravel-interact/blob/master/public/img/data-email.png?raw=true)
+
+*__user password__: _interact_*
 
 ## Features
 
