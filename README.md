@@ -64,7 +64,7 @@ After you create migration, please ensure your database like below
 - Javascript
 - AJAX
 - Contributions
-- [Testing](.#Testing)
+- [Testing](#testing)
 - Etc
 
 ## Custom API
