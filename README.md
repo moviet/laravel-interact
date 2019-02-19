@@ -64,7 +64,7 @@ After you create migration, please ensure your database like below
 - Javascript
 - AJAX
 - Contributions
-- [Testing](https://github.com/moviet/laravel-interact##Testing)
+- [Testing](.#Testing)
 - Etc
 
 ## Custom API
