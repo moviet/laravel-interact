@@ -32,7 +32,7 @@ After you create migration, please ensure your database like below
 ![data email](https://github.com/moviet/laravel-interact/blob/master/public/img/data-email.png?raw=true)
 
 
-## Features
+## Custom Features
 
 - [Authorization](https://github.com/moviet/laravel-interact)
 - Authentication
@@ -64,7 +64,7 @@ After you create migration, please ensure your database like below
 - Javascript
 - AJAX
 - Contributions
-- [Testing](https://laravel.com/docs/5.7/database-testing)
+- [Testing](.#-Testing)
 - Etc
 
 ## Custom API
