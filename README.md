@@ -64,6 +64,11 @@ You don't need to run basic _api_ like eg. http://localhost/api/ please see
 
 > *php artisan route:list*
 
+## Testing
+- new PHP v7.3+
+- new PHPUnit v7.5
+- new Laravel v5.7
+
 ## Contribution &#9996;
 
 Welcome for any contributions, please **Pull** request manually  
