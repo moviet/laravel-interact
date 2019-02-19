@@ -1,4 +1,4 @@
-&#10084; Interact - A simple micro facebook
+<img src="https://github.com/moviet/laravel-interact/blob/master/public/img/it-logo-purple.png?raw=true" width="26"> Interact - A simple micro facebook
 ======================================================
 [![Build Status](https://travis-ci.org/moviet/laravel-interact.svg?branch=master)](https://travis-ci.org/moviet/laravel-interact)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://doge.mit-license.org)
