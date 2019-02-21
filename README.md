@@ -16,8 +16,8 @@ Please free configure .env your app and run the command like below
 *  composer dump-autoload
 *  php artisan optimize
 *  php artisan [migrate:refresh --seed](https://github.com/moviet/laravel-interact)
-*  php artisan serve 
-*  run localhost:8000
+*  php artisan serve (up to you)
+*  run localhost:8000 (domain/port free)
 *  welcome to interact
 
 > *configuration file .env (up your choices) please see basic tutorial on laravel.com*
