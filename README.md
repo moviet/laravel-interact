@@ -1,10 +1,10 @@
-<img src="https://github.com/moviet/laravel-interact/blob/master/public/img/it-logo-purple.png?raw=true" width="26"> Interact - A simple micro facebook
+<img src="https://github.com/moviet/laravel-interact/blob/master/public/img/it-logo-purple.png?raw=true" width="26"> Interact - A dead simple micro facebook
 ======================================================
 [![Build Status](https://travis-ci.org/moviet/laravel-interact.svg?branch=master)](https://travis-ci.org/moviet/laravel-interact)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://doge.mit-license.org)
 [![Usage](https://img.shields.io/badge/tutorial-basic-brightgreen.svg)](https://github.com/moviet/laravel-interact)
 
-**__Interact__** is a simple [*social media website*](https://facebook.com) like (eg. *__facebook__*, *twitter*, etc) built using _[__Laravel version 5.7__](https://github.com/laravel/laravel)_ the purposes is just for learning a good project development practices using php laravel framework for teamwork or individual faker, you are free to create your own project by learning by learning by learning and by learning headache
+**__Interact__** is a simple [*social media website*](https://facebook.com) idea like (eg. *__facebook__*, *twitter*, etc) built using _[__Laravel version 5.7__](https://github.com/laravel/laravel)_ the purposes is just for learning a good project (development) practices using php laravel framework for teamwork or individual faker, you are free to create your own project by learning by learning by learning and by learning headache
 
 ## Quick Installation
 
@@ -68,7 +68,7 @@ After you create migration, please ensure your database like below
 - Etc
 
 ## Custom API
-You don't need to run basic _api_ like eg. [http://localhost/api/](#custom-features) please see  
+You don't need to run basic _api_ like eg. [http://localhost/api/](#custom-features) please see [here](https://github.com/moviet/laravel-interact/tree/master/routes) or 
 
 > *php artisan route:list*
 
