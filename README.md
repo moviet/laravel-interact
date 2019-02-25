@@ -10,6 +10,7 @@
 
 Please free configure .env your app and run the command like below
 
+* **Fork** this repository for interacting the new update
 * **Clone** ~ [https://github.com/moviet/laravel-interact.git](https://github.com/moviet/laravel-interact.git)
 * **Install** ~ [laravel new version 5.7](https://github.com/laravel/laravel)
 *  copy all vendor laravel 5.7 to your interact path 
