@@ -4,16 +4,19 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://doge.mit-license.org)
 [![Usage](https://img.shields.io/badge/tutorial-basic-brightgreen.svg)](https://github.com/moviet/laravel-interact)
 
-**__Interact__** is a simple [*social media website*](https://facebook.com) idea like (eg. *__facebook__*, *twitter*, etc) built using _[__Laravel version 7.11__](https://github.com/laravel/laravel)_ the purposes is just for learning a simple project web (development) with php laravel framework for beginner, you are free to create your own project by learning and learning the concept of this simple pattern
+**__Interact__** is a simple [*social media website*](https://facebook.com) idea like (eg. *__facebook__*, *twitter*, etc) created using _[__Laravel Version 7.11__](https://github.com/laravel/laravel)_ the purpose is just for learning a simple project web (development) with php laravel framework for beginner, you are free to create your own project by learning and learning the concept of this simple patterns
 
 ## Quick Installation
 
 Please free configure .env your app and run the command like below
 
 * **Fork** this repository for the new update
+* **Install** ~ composer global require laravel/installer
+* **Create** ~ composer create-project --prefer-dist laravel/laravel laravel-interact
 * **Clone** ~ [https://github.com/moviet/laravel-interact.git](https://github.com/moviet/laravel-interact.git)
 * **Install** ~ composer require laravel/ui
-*  create database name 'whatever'
+*  composer install and/or update
+*  create whatever database name
 *  composer dump-autoload
 *  php artisan optimize
 *  php artisan [migrate:refresh --seed](https://github.com/moviet/laravel-interact)
@@ -27,10 +30,12 @@ Please free configure .env your app and run the command like below
 
 After you create migration, please ensure your database like below  
 
-- __user-login__ : on below  
-- __user-password__ : _interact_
+- __username__ : on below  
+- __password__ : _interact_
 
 ![data email](https://github.com/moviet/laravel-interact/blob/master/public/img/data-email.png?raw=true)
+
+> if you want to create new user, you must install local 'email server' for notification
 
 
 ## Custom Features
