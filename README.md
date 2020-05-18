@@ -4,19 +4,17 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://doge.mit-license.org)
 [![Usage](https://img.shields.io/badge/tutorial-basic-brightgreen.svg)](https://github.com/moviet/laravel-interact)
 
-**__Interact__** is a simple [*social media website*](https://facebook.com) idea like (eg. *__facebook__*, *twitter*, etc) created using _[__Laravel Version 7.11__](https://github.com/laravel/laravel)_ the purpose is just for learning a simple project web (development) with php laravel framework for beginner, you are free to create your own project by learning and learning the concept of this simple patterns
+**__Interact__** is a simple [*social media website*](https://facebook.com) idea like (eg. *__facebook__*, *twitter*, etc) created using _[__Laravel Version 7.11__](https://github.com/laravel/laravel)_ the purpose is just for learning a simple project web (development) with php laravel framework for `beginner`, you are free to create your own project by learning and learning the fully packages of this simple patterns
 
 ## Quick Installation
 
 Please free configure .env your app and run the command like below
 
-* **Fork** this repository for the new update
-* **Install** ~ composer global require laravel/installer
-* **Create** ~ composer create-project --prefer-dist laravel/laravel laravel-interact
+* **Fork** this repository for new update
 * **Clone** ~ [https://github.com/moviet/laravel-interact.git](https://github.com/moviet/laravel-interact.git)
-* **Install** ~ composer require laravel/ui
 *  composer install and/or update
-*  create whatever database name
+*  ~ `composer require laravel/ui`
+*  create new database
 *  composer dump-autoload
 *  php artisan optimize
 *  php artisan [migrate:refresh --seed](https://github.com/moviet/laravel-interact)
