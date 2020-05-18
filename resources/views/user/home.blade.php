@@ -230,23 +230,23 @@ Dashboard
 								<div class="label-remove"><button type="button" class="btn btn-outline-info">&#9903;</button></div>
 
 								<div class='label-group'>
-								<div class='label-photo'><a href="{{ route('user.show', ['id' => $staff->id]) }}"><img src="{{ $avatar }}" class="img-photo">
+								<div class='label-photo'><a href="{{ route('user.show', ['user' => $staff->id]) }}"><img src="{{ $avatar }}" class="img-photo">
 								</a></div></div>
-								<a href="{{ route('user.show', ['id' => $staff->id]) }}"><div class='label-post'>{{ $staff->name }}</div></a>
+								<a href="{{ route('user.show', ['user' => $staff->id]) }}"><div class='label-post'>{{ $staff->name }}</div></a>
 								<div class='label-post-date'>{{ date('d M Y H:i', strtotime($staff->created_at)) }}</div>
 								<div class='post-text'>{{ $staff->status }}</div>	
 								<div class='post-image'><img src="{{ $staff->image }}" class="post-image-size"></div>
 
 								@foreach ($liked as $likers)
-								@if ($likers->id === $id && $likers->token === $staff->token)
-								@php
-								$name = Auth::user()->name;
-								@endphp
-								@else
-								@php
-								$name = $staff->likes;
-								@endphp
-								@endif
+									@if ($likers->id === $id && $likers->token === $staff->token)
+									@php
+									$name = Auth::user()->name;
+									@endphp
+									@else
+									@php
+									$name = $staff->likes;
+									@endphp
+									@endif
 								@endforeach
 
 								@if ($staff->likes > 1 && !empty(count($liked)))
@@ -254,16 +254,19 @@ Dashboard
 									{{ $name }} and {{ $staff->likes - 1 }} others
 								</div>
 								@endif 
+								
 								@if ($staff->likes > 1 && empty(count($liked)))
 								<div class="like-count" id="thumbs{{ $staff->token }}">
 									{{ $staff->likes }}
 								</div>
 								@endif 
+
 								@if ($staff->likes == 1)
 								<div class="like-count" id="thumbs{{ $staff->token }}">
 									{{ $name }}
 								</div>
 								@endif 
+
 								@if ($staff->likes <= 0)
 								<div class="like-count tohide" id="thumbs{{ $staff->token }}">
 									{{ $staff->likes }}
@@ -276,11 +279,13 @@ Dashboard
 										<button class="post-like-btn filled" data-status="liked" data-role="1" data-token="{{ $staff->token }}" data-id="{{ $staff->id }}" data-lk="{{ $staff->likes }}" name="lk{{ $staff->token }}" id="thumbup"></button>
 								</div>
 								@endif
+
 								@if (empty(count($liked)))			
 								<div class="post-like">
 										<button class="post-like-btn" data-status="likes" data-role="1" data-token="{{ $staff->token }}" data-id="{{ $staff->id }}" data-lk="{{ $staff->likes + 1 }}" name="lk{{ $staff->token }}" id="thumbup"></button>
 								</div>
 								@endif
+
 								<div class="post-comment">
 										<button class="post-comment-btn"></button>
 								</div>	
@@ -295,20 +300,20 @@ Dashboard
 					@endif
 					
 				@if (!empty(count($groupBridge)))
-				@foreach ($groupBridge as $family)		
+					@foreach ($groupBridge as $family)		
 
-				@if ($staff->id === $family->id)
-				@foreach ($finder as $photo)
-				@if (empty($photo->avatar) && $photo->id === $family->id)
-				@php
-						$avatar = asset('/img/friend.png');
-				@endphp
-				@endif
-				@if (!empty($photo->avatar) && $photo->id === $family->id)
-				@php
-						$avatar = $photo->avatar;
-				@endphp
-				@endif	
+					@if ($staff->id === $family->id)
+					@foreach ($finder as $photo)
+					@if (empty($photo->avatar) && $photo->id === $family->id)
+					@php
+							$avatar = asset('/img/friend.png');
+					@endphp
+					@endif
+					@if (!empty($photo->avatar) && $photo->id === $family->id)
+					@php
+							$avatar = $photo->avatar;
+					@endphp
+					@endif	
 				@endforeach
 				<div class='margin-item box-width left'>
 						<div class='card h-100'>
@@ -316,9 +321,9 @@ Dashboard
 								<div class="label-remove"><button type="button" class="btn btn-outline-info">&#9903;</button></div>
 
 								<div class='label-group'>
-								<div class='label-photo'><a href="{{ route('user.show', ['id' => $staff->id]) }}"><img src="{{ $avatar }}" class="img-photo">
+								<div class='label-photo'><a href="{{ route('user.show', ['user' => $staff->id]) }}"><img src="{{ $avatar }}" class="img-photo">
 								</a></div></div>
-								<a href="{{ route('user.show', ['id' => $staff->id]) }}"><div class='label-post'>{{ $staff->name }}</div></a>
+								<a href="{{ route('user.show', ['user' => $staff->id]) }}"><div class='label-post'>{{ $staff->name }}</div></a>
 								<div class='label-post-date'>{{ date('d M Y H:i', strtotime($staff->created_at)) }}</div>
 								<div class='post-text'>{{ $staff->status }}</div>	
 								<div class='post-image'><img src="{{ $staff->image }}" class="post-image-size"></div>		
@@ -399,9 +404,9 @@ Dashboard
 							<div class="label-remove"><a href="{{ route('holiday.remove', ['id' => $staff->id, 'data' => $staff->token, 'token' => csrf_token(),]) }}" class="url-remove"><label class="btn btn-outline-info">&#9903;</label></a></div>
 
 							<div class='label-group'>
-							<div class='label-photo'><a href="{{ route('user.show', ['id' => $staff->id]) }}" class="url-user-link"><img src="{{ $avatar }}" class="img-photo"></a></div></div>
+							<div class='label-photo'><a href="{{ route('user.show', ['user' => $staff->id]) }}" class="url-user-link"><img src="{{ $avatar }}" class="img-photo"></a></div></div>
 
-							<a href="{{ route('user.show', ['id' => $staff->id]) }}"><div class='label-post'>{{ $staff->name }}</div></a>
+							<a href="{{ route('user.show', ['user' => $staff->id]) }}"><div class='label-post'>{{ $staff->name }}</div></a>
 							<div class='label-post-date'>{{date('d M Y H:i', strtotime($staff->created_at))}}</div>
 							<div class='post-text'>{{$staff->status}}</div>
 							<div class='post-image'><img src="{{ $staff->image }}" class="post-image-size"></div>

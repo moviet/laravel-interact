@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('title') 
-Interact 5.7
+Interact 7.11
 @endsection
 
 @section('css')
@@ -13,7 +13,7 @@ Interact 5.7
 <link rel="stylesheet" type="text/css" href="{{ asset('/vendor/animsition/css/animsition.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/css/util.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('/css/content.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/css/content.css') }}">
 @endsection
 
 @section('content')

@@ -4,26 +4,26 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://doge.mit-license.org)
 [![Usage](https://img.shields.io/badge/tutorial-basic-brightgreen.svg)](https://github.com/moviet/laravel-interact)
 
-**__Interact__** is a simple [*social media website*](https://facebook.com) idea like (eg. *__facebook__*, *twitter*, etc) built using _[__Laravel version 5.7__](https://github.com/laravel/laravel)_ the purposes is just for learning a good project (development) practices using php laravel framework for teamwork or individual faker, you are free to create your own project by learning by learning by learning and by learning headache
+**__Interact__** is a simple [*social media website*](https://facebook.com) idea like (eg. *__facebook__*, *twitter*, etc) built using _[__Laravel version 7.11__](https://github.com/laravel/laravel)_ the purposes is just for learning a simple project web (development) with php laravel framework for beginner, you are free to create your own project by learning and learning the concept of this simple pattern
 
 ## Quick Installation
 
 Please free configure .env your app and run the command like below
 
-* **Fork** this repository for interacting the new update
+* **Fork** this repository for the new update
 * **Clone** ~ [https://github.com/moviet/laravel-interact.git](https://github.com/moviet/laravel-interact.git)
-* **Install** ~ [laravel new version 5.7](https://github.com/laravel/laravel)
-*  copy all vendor laravel 5.7 to your interact path 
+* **Install** ~ composer require laravel/ui
+*  create database name 'whatever'
 *  composer dump-autoload
 *  php artisan optimize
 *  php artisan [migrate:refresh --seed](https://github.com/moviet/laravel-interact)
-*  php artisan serve (up to you)
-*  run localhost:8000 (domain/port free)
+*  php artisan serve
+*  type localhost:8000 on the browser
 *  welcome to interact
 
-> *configuration file .env (up your choices) please see basic tutorial on laravel.com*
+> *configuration file .env (is your choices) please see basic tutorial on laravel.com*
 
-## Data Builtin
+## Data Built-in
 
 After you create migration, please ensure your database like below  
 
@@ -69,14 +69,17 @@ After you create migration, please ensure your database like below
 - Etc
 
 ## Custom API
-You don't need to run basic _api_ like eg. [http://localhost/api/](#custom-features) please see [here](https://github.com/moviet/laravel-interact/tree/master/routes) or 
+You don't need to run basic _api_ like eg. [http://localhost/api/](#custom-features) please see [here](https://github.com/moviet/interact/tree/master/routes) or 
 
 > *php artisan route:list*
 
 ## Testing
 - new PHP v7.3+
 - new PHPUnit v7.5
-- new Laravel v5.7
+- new Laravel v7.11
+
+## Demo
+Please visit: <a href="http://laravel-interact.herokuapp.com" target="_blank">http://laravel-interact.herokuapp.com</a>
 
 ## Contribution &#9996;
 

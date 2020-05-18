@@ -54,19 +54,19 @@ Profile
 					@endif
 
 					@foreach ($profile as $data)
-					@if ($data->id === $id)
-					@if (!empty($data->avatar))
+						@if ($data->id === $id)
+							@if (!empty($data->avatar))
 					<div class="card-img-profile">
 						<img src="{{ $data->avatar }}" class="img-thumb" id="photo-profile">
 					</div>		
 											
-					@else
+							@else
 					<div class="card-img-profile">
 							<img src="{{ asset('/img/profile.png') }}" class="img-thumb">
 					</div>
-					@endif	
+							@endif	
 					<div class="title-profile text-center">{{ $parse->fully($data->name) }}</div>
-					@endif
+						@endif
 					@endforeach
 
 					@if ($id === $admin)
@@ -75,40 +75,40 @@ Profile
 					@endif
 	
 					@if (!empty(count($gates)))
-					@foreach ($gates as $family)	
-					@if ($id !== $admin && $family->id === $admin && $family->bridge === $id)		
-					<div class="friend-wait-link text-center">{{ 'Wait Approved' }}</div>
-					@endif
-					@endforeach
+						@foreach ($gates as $family)	
+							@if ($id !== $admin && $family->id === $admin && $family->bridge === $id)		
+								<div class="friend-wait-link text-center">{{ 'Wait Approved' }}</div>
+							@endif
+						@endforeach
 					@endif
 
 					@if (!empty(count($links)))
-					@foreach ($links as $family)	
-					@if ($id !== $admin && $family->bridge === $admin && $family->id === $id)		
-					<form method='POST' action='{{ route('attract.store') }}'>
-					<input type='hidden' name="name" value='{{ $family->name }}'>
-					<input type='hidden' name="id" value='{{ $id }}'>
-					@csrf
-					<input type="submit" value="Approved" class="btn contact-link text-center">
-					</form>
-					@endif
-					@endforeach
+						@foreach ($links as $family)	
+							@if ($id !== $admin && $family->bridge === $admin && $family->id === $id)		
+								<form method='POST' action='{{ route('attract.store') }}'>
+								<input type='hidden' name="name" value='{{ $family->name }}'>
+								<input type='hidden' name="id" value='{{ $id }}'>
+								@csrf
+								<input type="submit" value="Approved" class="btn contact-link text-center">
+								</form>
+							@endif
+						@endforeach
 					@endif
 
 					@if (!empty(count($group)) )
-					@foreach ($group as $fans)
-					@if ($id !== $admin && $fans->id === $admin && $fans->bridge === $id)
-					<div class="friend-profile-link tx-center"><img src="{{ asset('/img/heart.png') }}" class="img-friend-link">{{ $parse->cutSmall($data->name) }}</div>
-					@endif
-					@endforeach
+						@foreach ($group as $fans)
+							@if ($id !== $admin && $fans->id === $admin && $fans->bridge === $id)
+								<div class="friend-profile-link tx-center"><img src="{{ asset('/img/heart.png') }}" class="img-friend-link">{{ $parse->cutSmall($data->name) }}</div>
+							@endif
+						@endforeach
 					@endif
 
 					@if (!empty(count($friend)) )
-					@foreach ($friend as $fans)
-					@if ($id !== $admin && $fans->bridge === $admin && $fans->id === $id)
-					<div class="friend-profile-link tx-center"><img src="{{ asset('/img/heart.png') }}" class="img-friend-link">{{ $parse->cutSmall($data->name) }}</div>
-					@endif
-					@endforeach
+						@foreach ($friend as $fans)
+							@if ($id !== $admin && $fans->bridge === $admin && $fans->id === $id)
+								<div class="friend-profile-link tx-center"><img src="{{ asset('/img/heart.png') }}" class="img-friend-link">{{ $parse->cutSmall($data->name) }}</div>
+							@endif
+						@endforeach
 					@endif
 				
 					@if ($id !== $admin && empty(count($links)) && empty(count($gates)) && empty(count($group)) && empty(count($friend)))
@@ -149,7 +149,7 @@ Profile
 									<div class="row-friend-scroll" id="new-friend">
 										@foreach ($pull as $fiend)			
 										<div class="col-friend-profile small-box">
-											<a href="{{  route('user.show', ['id' => $fiend->id]) }}">
+											<a href="{{  route('user.show', ['user' => $fiend->id]) }}">
 												<img src="{{ asset('/img/friend.png') }}" class="img-thumbs">
 												<label class="label-as-friend"><span class="icon-heart">&#10084;</span> {{ $parse->cutSmall($fiend->name) }}</label>
 											</a>
@@ -172,7 +172,7 @@ Profile
 										<div class="row-friend-scroll" id="wait-friend">
 											@foreach ($push as $fiend)	
 											<div class="col-friend-profile small-box">
-												<a href="{{ route('user.show', ['id' => $fiend->bridge]) }}">
+												<a href="{{ route('user.show', ['user' => $fiend->bridge]) }}">
 													<img src="{{ asset('/img/friend.png') }}" class="img-thumbs">
 													<label class="label-as-friend"><span class="icon-heart">&#10084;</span> {{ $parse->cutSmall($fiend->adds) }}</label>
 												</a>
@@ -218,7 +218,7 @@ Profile
 											@endphp
 											@endif							
 											<div class="col-friend-profile small-box">
-												<a href="{{  route('user.show', ['id' => $fans->bridge]) }}">
+												<a href="{{  route('user.show', ['user' => $fans->bridge]) }}">
 													<img src="{{ $avatar }}" class="img-thumbs">
 													<div class="label-friend text-center"><span class="icon-heart">&#10084;</span> {{ $parse->cutSmall($fans->adds) }}</div>
 												</a>
@@ -247,7 +247,7 @@ Profile
 											@endif
 													
 											<div class="col-friend-profile small-box">
-													<a href="{{ route('user.show', ['id' => $fans->id]) }}">
+													<a href="{{ route('user.show', ['user' => $fans->id]) }}">
 														<img src="{{ $avatar }}" class="img-thumbs">
 														<div class="label-friend text-center"><span class="icon-heart">&#10084;</span> {{ $parse->cutSmall($fans->name) }}</div>
 													</a>
@@ -282,7 +282,7 @@ Profile
 											<div class="row-friend-scroll" id="find-friend">
 												@foreach ($finder as $fiend)					
 												<div class="col-friend-profile">
-														<a href="{{  route('user.show', ['id' => $fiend->id]) }}">
+														<a href="{{  route('user.show', ['user' => $fiend->id]) }}">
 															<img src="{{ $fiend->avatar ? $fiend->avatar : asset('/img/friend.png') }}" class="img-thumbs">
 															<div class="label-friend text-center"><span class="icon-heart">&#10084;</span> {{ $parse->cutSmall($fiend->name) }}</div>
 														</a>
@@ -379,13 +379,13 @@ Profile
 									@endif
 
 									<div class='label-group'>
-									<div class='label-photo'><a href="{{ route('user.show', ['id' => $stats->id]) }}">
+									<div class='label-photo'><a href="{{ route('user.show', ['user' => $stats->id]) }}">
 										<img src="{{ $avatar }}" class="img-photo">
 									</a></div></div>						
 									@endif
 									@endforeach
 
-									<a href="{{ route('user.show', ['id' => $stats->id]) }}">
+									<a href="{{ route('user.show', ['user' => $stats->id]) }}">
 										<div class='label-post'>{{$stats->name }}</div>
 									</a>
 
@@ -435,87 +435,7 @@ Profile
 											</button>
 									</div>	
 									</div>
-		
-
-
-									{{--
-									<div class="group-media-icon" style="display: none">
-									<table class="table-media-icon">
-									<tbody>
-									<tr>
-				
-									@if (!empty(count($adminLiked)) && !empty($stats->likes))
-									<td class="icon-media-box-profile-like">
-
-											<button class="link-icon-media filled" data-status="likes" data-role="1" data-token="{{ $stats->token }}" data-id="{{ $stats->id }}" data-lk="{{ $stats->likes }}" data-dk="{{ $stats->dislikes }}" name="lk{{ $stats->token }}">
-											<div class="icon-media-like">
-													<label>{{ $stats->likes }}</label>			
-											</div></button>
-		
-									</td>
-									@endif
-
-									@if (empty(count($adminLiked)) && !empty($stats->likes))				
-									<td class="icon-media-box-profile-like">
-
-											<button class="link-icon-media" data-status="likes" data-token="{{ $stats->token }}" data-id="{{ $stats->id }}" data-lk="{{ $stats->likes }}" data-dk="{{ $stats->dislikes }}" name="lk{{ $stats->token }}">
-													<div class="icon-media-like">
-															<label>{{ $stats->likes }}</label>
-													</div></button>
 	
-									</td>
-									@endif
-
-									@if (empty(count($adminLiked)) && empty($stats->likes))
-									<td class="icon-media-box-profile-like">
-											<button class="link-icon-media" data-status="likes" data-token="{{ $stats->token }}" data-id="{{ $stats->id }}" name="lk{{ $stats->token }}"><div class="icon-media-like">like</div></button>
-									</td>
-									@endif
-
-									@if (!empty(count($adminDisliked)) && !empty($stats->dislikes))
-									<td class="icon-media-box-profile-dislike">
-
-											<button class="link-icon-media filled" data-status="dislikes" data-role="2" data-token="{{ $stats->token }}" data-id="{{ $stats->id }}" data-lk="{{ $stats->likes }}" data-dk="{{ $stats->dislikes }}" name="dk{{ $stats->token }}">
-													<div class="icon-media-dislike">
-															<label>{{ $stats->dislikes }}</label>
-													</div></button>
-	
-									</td>
-									@endif
-									
-									@if (empty(count($adminDisliked)) && !empty($stats->dislikes))
-									<td class="icon-media-box-profile-dislike">
-
-											<button class="link-icon-media" data-status="dislikes" data-token="{{ $stats->token }}" data-id="{{ $stats->id }}" data-lk="{{ $stats->likes }}" data-dk="{{ $stats->dislikes }}" name="dk{{ $stats->token }}">
-													<div class="icon-media-dislike">
-															<label>{{ $stats->dislikes }}</label>			
-													</div></button>
-	
-									</td>
-									@endif
-				
-									@if (empty(count($adminDisliked)) && empty($stats->dislikes))
-									<td class="icon-media-box-profile-dislike">
-											<button class="link-icon-media" data-status="dislikes" data-token="{{ $stats->token }}" data-id="{{ $stats->id }}" name="dk{{ $stats->token }}"><div class="icon-media-dislike">not</div></button>
-									</td>
-									@endif
-
-									<td class="icon-media-box-shares">
-											<a class="link-icon-media-profile" id="share" href="#"><div class="icon-media-shares">share</div></a>
-									</td>
-	
-									<td class="icon-media-box-comment-profile">
-											<a class="link-icon-media-comment" href="#"><div class="icon-media-comment"></div></a>
-									</td>
-
-									</tr>
-									<tbody>
-									</table>
-									</div>
-									--}}
-
-
-
 								</div>
 							</div>
 					</div>
@@ -542,12 +462,12 @@ Profile
 										@endif
 
 										<div class='label-group'>
-										<div class='label-photo'><a href="{{ route('user.show', ['id' => $stats->id]) }}"><img src="{{ $avatar }}" class="img-photo">
+										<div class='label-photo'><a href="{{ route('user.show', ['user' => $stats->id]) }}"><img src="{{ $avatar }}" class="img-photo">
 										</a></div></div>
 										@endif
 										@endforeach
 
-										<a href="{{ route('user.show', ['id' => $stats->id]) }}"><div class='label-post'>{{ $stats->name }}</div></a>
+										<a href="{{ route('user.show', ['user' => $stats->id]) }}"><div class='label-post'>{{ $stats->name }}</div></a>
 
 										<div class='label-post-date'>{{date('d M Y H:i', strtotime($stats->created_at))}}</div>
 										<div class='post-text'>{{ $stats->status }}</div>
@@ -703,12 +623,12 @@ Profile
 										@endif
 
 										<div class='label-group'>
-										<div class='label-photo'><a href="{{ route('user.show', ['id' => $stats->id]) }}"><img src="{{ $avatar }}" class="img-photo">
+										<div class='label-photo'><a href="{{ route('user.show', ['user' => $stats->id]) }}"><img src="{{ $avatar }}" class="img-photo">
 										</a></div></div>
 										@endif
 										@endforeach
 
-										<a href="{{ route('user.show', ['id' => $stats->id]) }}"><div class='label-post'>{{$stats->name }}</div></a>
+										<a href="{{ route('user.show', ['user' => $stats->id]) }}"><div class='label-post'>{{$stats->name }}</div></a>
 
 										<div class='label-post-date'>{{date('d M Y H:i', strtotime($stats->created_at))}}</div>
 										<div class='post-text'>{{$stats->status}}</div>

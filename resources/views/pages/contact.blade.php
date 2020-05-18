@@ -59,7 +59,7 @@ Kontak
 					<div>
 						<select class="selection-2" name="division">
 							<option>Customer Service</option>
-							<option>Advertisement</option>
+							<option>Partnership</option>
 							<option>Other</option>
 						</select>
 					</div>

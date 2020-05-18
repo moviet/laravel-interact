@@ -23,6 +23,6 @@ $factory->define(App\Models\User::class, function (Faker $faker, $uid) {
         'email_verified_at' => Carbon::now(),
         'id' => Str::uuid(),
         'password' => bcrypt('interact'), // interact (or min 8 chars)
-        'remember_token' => str_random(64),
+        'remember_token' => Str::random(64),
     ];
 });
