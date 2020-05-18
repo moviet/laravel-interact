@@ -12,9 +12,8 @@ Please free configure .env your app and run the command like below
 
 * **Fork** this repository for new update
 * **Clone** ~ [https://github.com/moviet/laravel-interact.git](https://github.com/moviet/laravel-interact.git)
-*  composer install and/or update
-*  ~ `composer require laravel/ui`
 *  create new database
+*  ~ `composer require laravel/ui`
 *  composer dump-autoload
 *  php artisan optimize
 *  php artisan [migrate:refresh --seed](https://github.com/moviet/laravel-interact)
