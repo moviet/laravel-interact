@@ -3,16 +3,17 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://doge.mit-license.org)
 [![Usage](https://img.shields.io/badge/tutorial-basic-brightgreen.svg)](https://github.com/moviet/laravel-interact)
 
-**__Interact__** is a simple [*social media website*](https://facebook.com) idea like (eg. *__facebook__*, *twitter*, etc) created using _[__Laravel Version 7.11__](https://github.com/laravel/laravel)_ the purpose is just for learning a simple web (development) project using laravel framework, it's may just using basic patterns for beginner and you are free to create your own project by learning and learning the source codes
+**__Interact__** is just a simple [*social media website*](https://facebook.com) like (eg. *__facebook__*, *twitter*, etc) created using new _[__Laravel Version 7.11__](https://github.com/laravel/laravel)_ the purpose is just for learning web (development) project using laravel framework, it's may just using basic patterns for starter and you are free to create your own project by learning the source codes explisitely
 
 ## Quick Installation
 
 Please free configure .env your app and run the command like below
 
 * **Fork** this repository for new update
+*  Open your command line and move to the local path you want to install 
 * **Clone** ~ [https://github.com/moviet/laravel-interact.git](https://github.com/moviet/laravel-interact.git)
 *  create new database
-* **update** ~ `composer require laravel/laravel`
+* **update** ~ `composer install/update`
 * **install** ~ `composer require laravel/ui`
 *  composer dump-autoload
 *  php artisan optimize
@@ -32,7 +33,7 @@ After you create migration, please ensure your database like below
 
 ![data email](https://github.com/moviet/laravel-interact/blob/master/public/img/data-email.png?raw=true)
 
-> if you want to create new user, you must install local 'email server' for notification
+> *if you want to create new account, you must install local 'email server' for such as notification*
 
 
 ## Custom Features
