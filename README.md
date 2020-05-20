@@ -3,7 +3,7 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://doge.mit-license.org)
 [![Usage](https://img.shields.io/badge/tutorial-basic-brightgreen.svg)](https://github.com/moviet/laravel-interact)
 
-**__Interact__** is just a simple [*social media website*](https://facebook.com) like (eg. *__facebook__*, *twitter*, etc) created using new _[__Laravel Version 7.11__](https://github.com/laravel/laravel)_ the purpose is just for learning web (development) project using laravel framework, it's may just using basic patterns for starter and you are free to create your own project by learning the source codes explisitely
+**__Interact__** is just a simple [*social media website*](https://facebook.com) like (eg. *__facebook__*, *twitter*, etc) created using new _[__Laravel Version 7.11__](https://github.com/laravel/laravel)_ the purpose is just for learning web (development) project using laravel framework, it's may just using basic patterns for starter and you are free to create your own project by learning the source codes explicitly
 
 ## Quick Installation
 
