@@ -1337,6 +1337,14 @@ td.media-icon {
   display: block;
 }
 
+.map-url {
+  display: none;
+}
+
+.map-url-search {
+  display: none;
+}
+
 @media (max-width: 990px) {
   .content-top {
     width: 660px;
@@ -1358,45 +1366,6 @@ td.media-icon {
     max-width: 110px;
     min-width: 108px;
   }
-
-  /*
-  td.icon-media-box-like {
-    min-width: 65px;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  td.icon-media-box-dislike {
-    min-width: 65px;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  td.icon-media-box-profile-like {
-    max-width: auto;
-    width: 65px;
-    height: auto;
-  }
-  
-  td.icon-media-box-profile-dislike {
-    max-width: auto;
-    width: 65px;
-    height: auto;
-  }
-  
-  td.icon-media-box-shares {
-    min-width: 28px;
-    width: auto;
-    height: auto;
-  }
-  
-  td.icon-media-box-comment {
-    float: right;
-    min-width: 26px;
-    width: auto;
-    height: auto;
-  }
-  */
 
   .post-image {
     max-width: 400px;
@@ -1420,45 +1389,6 @@ td.media-icon {
   .content-profile {
     padding: 90px 15px 30px 15px;
   }
-
-  /*
-  td.icon-media-box-like {
-    min-width: 65px;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  td.icon-media-box-dislike {
-    min-width: 65px;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  td.icon-media-box-profile-like {
-    max-width: auto;
-    width: 65px;
-    height: auto;
-  }
-  
-  td.icon-media-box-profile-dislike {
-    max-width: auto;
-    width: 65px;
-    height: auto;
-  }
-  
-  td.icon-media-box-shares {
-    min-width: 28px;
-    width: auto;
-    height: auto;
-  }
-  
-  td.icon-media-box-comment {
-    float: right;
-    min-width: 26px;
-    width: auto;
-    height: auto;
-  }
-  */
 }
 
 @media (max-width: 600px) {
@@ -1469,6 +1399,10 @@ td.media-icon {
 
   .content-profile {
     padding: 90px 15px 30px 15px;
+  }
+
+  .content-wrapper {
+    padding: 40px 25px 40px 25px;
   }
 
   .row-friend {
@@ -1515,4 +1449,25 @@ td.media-icon {
     color: #ffffff;
     background: #5b68be;
   }
+
+  .map-url {
+		display: block;
+		margin: -20px 0 10px 5px;
+  }
+
+  .map-url-search {
+		display: block;
+		margin: -30px 0 10px 5px;
+  }
+  
+  .map-url-dashboard {
+		font-size: 11px;
+		color: #b1b1b3;
+	}
+
+	.map-url-link {
+		font-size: 11px;
+		color: #a6b0d8;
+		cursor: none;
+	}
 }

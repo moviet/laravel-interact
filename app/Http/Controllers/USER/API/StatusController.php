@@ -5,7 +5,6 @@ namespace App\Http\Controllers\USER\API;
 use Carbon\Carbon;
 use App\Bubble\Core\Ruin;
 use App\Bubble\Core\Authorizm;
-use Illuminate\Support\Facades\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StatusRequest;
@@ -39,23 +38,28 @@ class StatusController extends Controller
             );
 
         } else {
-
             if ($request->hasFile('photos')) {
-
                 $file = $request->file('photos');
                 $name = Carbon::now()->toDateString().'-'.$this->uin().'.'.$file->getClientOriginalExtension();
 
                 $file->move(public_path('/img-status/'), $name);
                 $getImage = '/img-status/' . $name;
+
                 $post->store($auth, $request, $getImage, $this->uin());
-            
+
+                if (!$post) {
+                    return back()->withErrors([
+                        'photos' => 'Invalid image extension'
+                    ]);
+                }
+
             } elseif (!$request->hasFile('photos') && $request->input('status')) {
                 $post->store($auth, $request, null, $this->uin());
   
-            } elseif (!$request->hasFile('photos') && !$request->input('status')) {
-                return back()->withErrors(
-                    ['status' => 'Oops! your status is empty']
-                );
+            } else {
+                return back()->withErrors([
+                    'status' => 'Oops! your status is empty',
+                ]);
             }
         }
 
@@ -78,11 +82,7 @@ class StatusController extends Controller
             return redirect()->back();
         }
 
-        $delete = $post->destroy($id, $data);
-
-        if (!$delete) {
-            return redirect()->back();
-        }
+        $post->destroy($id, $data);
 
         return redirect()->back();
     }

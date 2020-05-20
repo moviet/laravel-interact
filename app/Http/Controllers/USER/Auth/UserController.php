@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\USER\Auth;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Observers\Forks\Authenticable;
 
 class UserController

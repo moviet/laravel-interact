@@ -5,7 +5,7 @@ namespace App\Http\Controllers\ADMIN\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class YouCanMakeYourSelfController extends Controller
+class SampleController extends Controller
 {
     /**
      * Display a listing of the resource.

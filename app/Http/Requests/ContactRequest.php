@@ -17,7 +17,7 @@ class ContactRequest extends FormRequest
             'name'      => 'required|string|max:80|regex:/^[a-zA-Z ]*$/',
             'email'     => 'required|string|email|max:255',
             'division'  => 'required|string|max:20',
-            'message'   => 'required|string|regex:/^[a-zA-Z0-9?!@\/\/\&\$\.\,\_\+ ]*$/|min:10|
+            'message'   => 'required|string|regex:/^[a-zA-Z0-9 ?!@\/\/\&\$\.\,\_\+]*$/|min:10|
                             max:6000',
         ];
     }
@@ -25,7 +25,7 @@ class ContactRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.regex'        => 'Invalid Name Characters',
+            'name.regex'        => 'Invalid Characters',
             'email.required'    => 'Email Address Is Required',
             'message.regex'     => 'Your message characters are messy',
         ];

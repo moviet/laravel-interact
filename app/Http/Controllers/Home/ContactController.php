@@ -6,14 +6,10 @@ use Carbon\Carbon;
 use App\Models\Contact;
 use App\Bubble\Core\Ruin;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use App\Mail\EmailNotification;
 use App\Bubble\Core\Identicated;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Mail;
+// use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\ContactRequest;
-use Illuminate\Support\Facades\Session;
-use App\Http\Resources\Contact as Data;
 
 class ContactController extends Controller
 {
@@ -60,14 +56,16 @@ class ContactController extends Controller
             'division'  => $request->input('division'),
             'message'   => $request->input('message'),
             'token'     => Str::uuid(),
-            'posted_at' => Carbon::now(),
+            'posted_at' => Carbon::now('Asia/Jakarta')->format('Y-m-d H:i:s'),
             'ip'        => $request->ip(),
 
         ], $request->validated());
 
         if ($post) {
             $request->session()->flash($this->senderFlash, 'success');
-            $post->sendEmail($request['email'], $this->show($post[$this->identify]));
+
+            // SEND EMAIL (Credensial on .env)
+            // $post->sendEmail($request['email'], $this->show($post['id']));
         }
 
         return redirect()->back();

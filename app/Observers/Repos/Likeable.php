@@ -17,9 +17,9 @@ class Likeable
         $data->authorize();
 
         return Like::create([
-            'id'       => Auth::user()->uid,
-            'bridge'   => $data->input('id'),
-            'status'   => $value,
+            'id'       => (int) Auth::user()->uid,
+            'bridge'   => (int) $data->input('id'),
+            'status'   => (int) $value,
             'token'    => $data->input('token'),
 
         ], $data->validated());
@@ -35,7 +35,7 @@ class Likeable
                 ->where('id', Auth::user()->uid)
                 ->limit(1)
                 ->update([
-                    'status' => $value,
+                    'status' => (int) $value,
         ]);
     }
 

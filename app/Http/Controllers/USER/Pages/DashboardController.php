@@ -9,7 +9,6 @@ use App\Bubble\Core\Authorizm;
 use App\Scopes\Posting as Post;
 use App\Scopes\Profile as Hub;
 use App\Scopes\Likeable as Like;
-use App\Observers\Repos\Posting;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
@@ -38,7 +37,7 @@ class DashboardController extends Controller
      * @return Illuminate\Http\Redirect
      * @return Illuminate\Http\View
      */
-    public function show(int $id, Hub $hub, Post $post, Groups $group, Posting $posting)
+    public function show(int $id, Hub $hub, Post $post, Groups $group, Like $like)
     {
         if ($id !== Auth::user()->uid) {
             return $this->backToHome();
@@ -51,13 +50,17 @@ class DashboardController extends Controller
 
         $this->getToken();
         $token = session($this->token);
+
+        // Member
         $finder = $hub->findByAll();
         $finderLimit = $hub->findByLimitFriend();
         $profile = $hub->findById($this->identify, $id);
 
+        // Friendship
         $groupId = $group->findFriendByGroupId($id);   
         $groupBridge = $group->findFriendByGroupBridge($id); 
 
+        // Posting
         $posts = $post->findById($this->identify, $id);
         $postAll = $post->findByAll();
 
@@ -70,6 +73,7 @@ class DashboardController extends Controller
             'profile'           => $profile,
             'groupId'           => $groupId,
             'groupBridge'       => $groupBridge,
+            'like'              => $like,
             'posts'             => $posts,
             'postAll'           => $postAll,     
         ]);

@@ -31,8 +31,8 @@ class PhotoProfileRequest extends FormRequest
     public function messages()
     {
         return [
-            'profile.image' => 'Image extension invalid',
-            'profile.mimes' => 'Image extension invalid',        
+            'profile.image' => 'Invalid image extension',
+            'profile.mimes' => 'Invalid image extension',       
         ];
     }
 }

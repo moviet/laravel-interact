@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\USER\API;
 
-use App\Scopes\Posting;
 use App\Bubble\Core\Likeable;
 use App\Http\Controllers\Controller;
 use App\Observers\Repos\Posting as Post;
@@ -34,44 +33,56 @@ class LikeableController extends Controller
     public function store(LikeableRequest $request, Like $like, Post $post)
     {
         if ($request->input('status') === $this->likes) {
-            
-            $likes = $like->show($request);
-            $liked = $request->input('like');
-  
-            if (empty(count($likes))) {
+            $liked = (int) $request->input('like');
+            $postLike = ($liked + 1);
+
+            $likeable = $like->show($request);
+
+            if (empty(count($likeable))) {
                 $like->store($request, 1);
-                $post->update($request, 'likes+1', 'dislikes');
+                $post->update($request, $postLike);
+            } 
+
+            if ($liked >= 1) {
+                $response = $request->input('admin').' and '.$liked.' others';
 
             } else {
-                $like->update($request, 1);
-                $post->update($request, 'likes+1', 'dislikes');  
+                $response = $request->input('admin');
             }
 
             return response()->json([
-                'msg'     => 'liked',
-                'like'    => $liked,
+                'msg'   => 'liked',
+                'like'  => $response,
+                'thumb' => 'liked',
+                'counts' => $postLike,
             ]);
         
         }  elseif ($request->input('status') === $this->liked) {
+            $likeable = $like->show($request);
 
-            $like->destroy($request);
-            $posting = $post->update($request, 'likes-1', 'dislikes');
+            if (!empty(count($likeable))) {
+                $like->destroy($request);
 
-            if ($request->input('like') == 0) {
-                $msg = 'unliked';
-                $liked = $request->input('like');
-            
-            } elseif ($request->input('like') >= 1) {
-                $msg = 'justunliked';
-                $liked = $request->input('like') - 1;
-            } 
+                if ((int) $request->input('like') <= 1) {
+                    $msg = 'unliked';
+                    $liked = 0;
+                    $posting = $post->update($request, null);
+                
+                } elseif ((int) $request->input('like') > 1) {
+                    $msg = 'justunliked';
+                    $liked = (int) $request->input('like') - 1;
+                    $posting = $post->update($request, $liked);
+                } 
 
-            if ($posting) {
-                return response()->json([
-                    'msg'     => $msg,
-                    'like'    => $liked,
-                ]);
-            }
+                if ($posting) {
+                    return response()->json([
+                        'msg'     => $msg,
+                        'like'    => $liked,
+                        'thumb' => 'likes',
+                        'counts' => $liked,
+                    ]);
+                }
+            }  
         } 
     }
 }

@@ -25,7 +25,7 @@ trait Authorizm
 
     public function getToken()
     {
-        $token = session()->flash(
+        return session()->flash(
             $this->token, $this->uin()
         );
     }

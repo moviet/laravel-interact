@@ -24,14 +24,15 @@ class SearchRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'  => 'required|string|max:50',
+            'name'  => 'required|string|max:50|regex:/^[a-zA-Z0-9 \-\_\#\@]*$/',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => "Please enter an user name",      
+            'name.required' => "Please enter an user name", 
+            'name.regex' => "Invalid characters",      
         ];
     }
 }

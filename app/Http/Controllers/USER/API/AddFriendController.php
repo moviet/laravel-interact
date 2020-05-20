@@ -29,7 +29,7 @@ class AddFriendController extends Controller
      */
     public function store(Auth $auth, AddRequest $request, Acc $acc)
     {
-        $saved = $acc->store($auth, $request);
+        $acc->store($auth, $request);
 
         return redirect()->back();
     }

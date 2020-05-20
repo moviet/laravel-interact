@@ -17,7 +17,7 @@ class CreatePostingsTable extends Migration
             $table->integer('id')->unsigned()->index();
             $table->string('name', 80);
             $table->string('status', 5000)->nullable();
-            $table->integer('likes')->unsigned()->index();
+            $table->integer('likes')->nullable()->unsigned()->index();
             $table->binary('image')->nullable();       
             $table->string('token', 50)->index();            
             $table->timestamps();

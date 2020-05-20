@@ -42,19 +42,17 @@ class PhotoProfileController extends Controller
 
         if ($load) {
             return response()->json([
-                'alerts'  => 'success',
-                'msg'     => 'Photo has been updated',
-                'send'    => $getImage,
+                'alerts'    => 'success',
+                'msg'       => 'Photo has been updated',
+                'send'      => $getImage,
             ]);
-       
-        } 
-        
-        if (!$file) { 
+
+        } else {
             return response()->json([
-                'alerts'  => 'failed',
-                'msg'     => 'Request data invalid',
-                'send'    => 'failed',
-            ]);      
-        }  
+                'alerts'    => 'failed',
+                'msg'       => 'Invalid image extension',
+                'send'      => 'failed',
+            ]);            
+        } 
     }
 }

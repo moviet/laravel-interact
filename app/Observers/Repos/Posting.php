@@ -2,7 +2,6 @@
 
 namespace App\Observers\Repos;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Status\Posting as Post;
 
@@ -25,6 +24,7 @@ class Posting
             'id'     => Auth::User()->uid,
             'name'   => Auth::User()->name,
             'status' => $data->input('status'),
+            'likes'  => null,
             'image'  => $image,
             'token'  => $token,         
 
@@ -36,18 +36,16 @@ class Posting
         return Post::where('id', $id)->where('token', $data)->limit(1)->delete();
     }
 
-    public function update($data, $like, $dislike)
+    public function update($data, $like)
     {
         $data->authorize();
-
         $data->validated();
 
         return Post::where('token', $data->input('token'))
                 ->where('id', $data->input('id'))
                 ->limit(1)
                 ->update([
-                    'likes'    => DB::raw($like),
-                    'dislikes' => DB::raw($dislike),
+                    'likes' => $like,
         ]);
     }
 }

@@ -16,13 +16,6 @@ trait Likeable
      * 
      * @var string
      */
-    protected $dislikes = 'dislikes';
-
-    /**
-     * Generate likeable
-     * 
-     * @var string
-     */
     protected $liked = 'liked';
 
     /**
@@ -31,20 +24,6 @@ trait Likeable
      * @var string
      */
     protected $unliked = 'unliked';
-
-    /**
-     * Generate likeable
-     * 
-     * @var string
-     */
-    protected $disliked = 'disliked';
-
-    /**
-     * Generate likeable
-     * 
-     * @var string
-     */
-    protected $undisliked = 'undisliked';
 
     /**
      * Generate likeable

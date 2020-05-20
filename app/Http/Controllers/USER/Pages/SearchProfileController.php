@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\USER\Pages;
 
 use App\Scopes\Profile;
-use App\Bubble\Core\Ruin;
+// use App\Bubble\Core\Ruin;
 use App\Bubble\Core\UrlMap;
 use App\Bubble\Core\Authorizm;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\SearchRequest;
 
@@ -36,8 +36,6 @@ class SearchProfileController extends Controller
     public function store(SearchRequest $request)
     {
         $request->validated();
-
-        $names = $request->input('name');
 
         $getName = explode(' ', $request->input('name'));
 

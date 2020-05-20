@@ -8,9 +8,9 @@ use App\Bubble\Core\Ruin;
 use App\Bubble\Core\UrlMap;
 use App\Scopes\Profile as Hub;
 use App\Bubble\Core\Authorizm;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Scopes\Approved as Acc;
-use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller

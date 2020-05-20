@@ -236,7 +236,7 @@ input.input-search {
 }
 
 .find-count {
-	color: #94a3e7;
+	color: #7f8ed1;
 	margin-left: 5px;
 }
 
@@ -276,6 +276,10 @@ input.input-search {
 	padding: 6px 10px;
 	border-radius: 4px;
 	cursor: pointer;
+}
+
+.map-url-home {
+  display: none;
 }
 
 @media (max-width: 540px) {
@@ -333,5 +337,18 @@ input.input-search {
 		height: auto;
 		padding: 9px 0;
 		border-radius: 4px;
+	}
+
+	.map-url-home {
+		display: block;
+		margin: -15px 0 10px 20px;
+		font-size: 11px;
+		color: #b1b1b3;
+	}
+
+	.map-url-home-link {
+		font-size: 11px;
+		color: #a6b0d8;
+		cursor: none;
 	}
 }

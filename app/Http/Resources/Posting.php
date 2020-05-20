@@ -18,6 +18,8 @@ class Posting extends JsonResource
             'id'         => $this->id,
             'name'       => $this->name,
             'status'     => $this->status,
+            'likes'      => $this->likes,
+            'image'      => $this->image,
             'token'      => $this->token,        
             'created_at' => $this->dateTime($this->created_at),
             'updated_at' => $this->dateTime($this->updated_at),
