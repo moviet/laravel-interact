@@ -358,13 +358,11 @@ Profile
 																	</div>
 																	<div class="media-upload">
 																			<label class="label-upload" for="upload">										
-																					<span class="span-upload"> Image
-																						</span>
+																					<span class="span-upload"> Image</span>
 																					<img src="{{ asset('img/upload-i.png') }}" class="media-photo">		
-																					<span class="span-upload-filename"> No image selected
-																						</span>										
+																					<span class="span-upload-filename"> No image selected</span>										
 																		</label>
-																	<input class="btn-upload" type="file" name="photos" id="upload" value="">
+																	<input class="btn-upload" type="file" name="photos" id="upload">
 																	</div>
 																	{{-- btn-post btn-primary-status --}}
 																	<input class="btn btn-primary" type="submit" value="Share A Friend">

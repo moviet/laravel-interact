@@ -689,6 +689,12 @@ textarea.form-control-status:focus, textarea.form-control-status:before {
   border-radius: 2px;
 }
 
+.alert-img {
+  font-family: 'Tahoma';
+  font-size: 13px;
+  color: #f14545 !important;
+}
+
 .span-upload-filename {
   float: left;
   width: auto;

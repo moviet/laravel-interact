@@ -24,7 +24,7 @@ class StatusRequest extends FormRequest
     public function rules()
     {
         return [
-            'status'    => 'max:5000|regex:/^[a-zA-Z0-9 \-\@\#\.\,\_\+\-\?\!\/\(\)]*$/',
+            'status'    => 'nullable|max:5000|regex:/^[a-zA-Z0-9\-\@\#\.\,\_\+\-\?\!\/ ]*$/',
             'capture'   => 'required|min:25',
             'photos'    => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
@@ -35,7 +35,7 @@ class StatusRequest extends FormRequest
         return [
             'status.max' => 'Hello, your status is maximum',
             'status.regex' => 'Invalid characters',
-            'photos.image' => 'Invalid image extension',
+            'photos.image' => 'Invalid image extensions',
             'photos.mimes' => 'Invalid image extension',
         ];
     }

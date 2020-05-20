@@ -3,7 +3,7 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://doge.mit-license.org)
 [![Usage](https://img.shields.io/badge/tutorial-basic-brightgreen.svg)](https://github.com/moviet/laravel-interact)
 
-**__Interact__** is a simple [*social media website*](https://facebook.com) idea like (eg. *__facebook__*, *twitter*, etc) created using _[__Laravel Version 7.11__](https://github.com/laravel/laravel)_ the purpose is just for learning a simple project web (development) with php laravel framework for `beginner`, you are free to create your own project by learning and learning the full packages of this simple patterns
+**__Interact__** is a simple [*social media website*](https://facebook.com) idea like (eg. *__facebook__*, *twitter*, etc) created using _[__Laravel Version 7.11__](https://github.com/laravel/laravel)_ the purpose is just for learning a simple web (development) project using laravel framework, it's may just using basic patterns for beginner and you are free to create your own project by learning and learning the source codes
 
 ## Quick Installation
 
@@ -12,7 +12,8 @@ Please free configure .env your app and run the command like below
 * **Fork** this repository for new update
 * **Clone** ~ [https://github.com/moviet/laravel-interact.git](https://github.com/moviet/laravel-interact.git)
 *  create new database
-*  ~ `composer require laravel/ui`
+* **update** ~ `composer require laravel/laravel`
+* **install** ~ `composer require laravel/ui`
 *  composer dump-autoload
 *  php artisan optimize
 *  php artisan [migrate:refresh --seed](https://github.com/moviet/laravel-interact)
@@ -20,7 +21,7 @@ Please free configure .env your app and run the command like below
 *  type localhost:8000 on the browser
 *  welcome to interact
 
-> *configuration file .env (is your choices) please see basic tutorial on laravel.com*
+> *setting environment eg: .env (is your choice) please check the documentation on laravel.com*
 
 ## Data Built-in
 
@@ -80,7 +81,7 @@ You don't need to run basic _api_ like eg. [http://localhost/api/](#custom-featu
 - new Laravel v7.11
 
 ## Demo
-Please visit: <a href="http://laravel-interact.herokuapp.com" target="_blank">http://laravel-interact.herokuapp.com</a>
+Please visit: <a href="http://interaksi.herokuapp.com" target="_blank">http://interaksi.herokuapp.com</a>
 
 ## Contribution &#9996;
 

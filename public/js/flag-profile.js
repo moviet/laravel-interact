@@ -60,11 +60,16 @@ $(document).ready( function() {
 
 		$('.btn-upload').on('change',function(e) {
 				e.preventDefault();
-				var imageName  = $('#upload').prop('files')[0].name;
+				var file = document.querySelector("#upload");
 
-				$('.span-upload-filename').html(imageName);
-			
-				fName.replace('C:\\fakepath\\', " ");
+				if (/\.(jpe?g|jpg|png|gif)$/i.test(file.files[0].name) === false) { 
+						var imageName  = $('#upload').prop('files')[0].name;
+						$('.span-upload-filename').addClass('alert-img').html('Invalid file image');
+
+				} else {
+						var imageName  = $('#upload').prop('files')[0].name;
+						$('.span-upload-filename').removeClass('alert-img').html(imageName);
+				}
 		});
 });
 	
