@@ -37,7 +37,7 @@ class PhotoProfileController extends Controller
         $name = Carbon::now()->toDateString().'-'.$this->uin().'.'.$file->getClientOriginalExtension();
 
         $file->move(public_path('/img-profile/'), $name);
-        $getImage = '/img-profile/' . $name;
+        $getImage = '/img-profile/' . strtolower($name);
         $load = $profile->update($request, $getImage);
 
         if ($load) {

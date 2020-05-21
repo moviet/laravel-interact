@@ -52,7 +52,7 @@ Profile
 												<div class="edit-profile" title="Change Photo Profile">
 														<label class="label-upload-profile" for="profile">
 																<img src="{{ asset('/img/edit.png') }}" class="edit-thumb">
-																<input class="profile-upload" type="file" name="profile" id="profile" value="">
+																<input class="profile-upload" type="file" name="profile" id="profile" accept="image/*;capture=camera">
 														</label>
 												</div>
 										@endif
@@ -61,7 +61,7 @@ Profile
 												@if ($data->id === $id)
 														@if (!empty($data->avatar))
 																<div class="card-img-profile">
-																	<img src="{{ $data->avatar }}" class="img-thumb" id="photo-profile">
+																	<img src="{{ asset($data->avatar) }}" class="img-thumb" id="photo-profile">
 																</div>																
 														@else
 																<div class="card-img-profile">
@@ -232,7 +232,7 @@ Profile
 																												@endphp
 																										@elseif (!empty($photo->avatar))
 																												@php
-																														$avatar = $photo->avatar;
+																														$avatar = asset($photo->avatar);
 																												@endphp
 																										@endif	
 
@@ -263,7 +263,7 @@ Profile
 																												@endphp
 																										@elseif (!empty($photo->avatar))
 																												@php
-																														$avatar = $photo->avatar;
+																														$avatar = asset($photo->avatar);
 																												@endphp
 																										@endif
 																												
@@ -304,7 +304,7 @@ Profile
 														@foreach ($finder as $fiend)					
 																<div class="col-friend-profile">
 																		<a href="{{  route('user.show', ['user' => $fiend->id]) }}">
-																			<img src="{{ $fiend->avatar ? $fiend->avatar : asset('/img/friend.png') }}" class="img-thumbs">
+																			<img src="{{ $fiend->avatar ? asset($fiend->avatar) : asset('/img/friend.png') }}" class="img-thumbs">
 																			<div class="label-friend text-center"><span class="icon-heart">&#10084;</span> {{ $parse->cutSmall($fiend->name) }}</div>
 																		</a>
 																</div>										
@@ -362,7 +362,7 @@ Profile
 																					<img src="{{ asset('img/upload-i.png') }}" class="media-photo">		
 																					<span class="span-upload-filename"> No image selected</span>										
 																		</label>
-																	<input class="btn-upload" type="file" name="photos" id="upload">
+																	<input class="btn-upload" type="file" name="photos" id="upload" accept="image/*;capture=camera">
 																	</div>
 																	{{-- btn-post btn-primary-status --}}
 																	<input class="btn btn-primary" type="submit" value="Share A Friend">
@@ -437,7 +437,7 @@ Profile
 																	@endphp
 																	@elseif (!empty($photo->avatar))
 																	@php
-																			$avatar = $photo->avatar;
+																			$avatar = asset($photo->avatar);
 																	@endphp
 																	@endif
 
@@ -457,7 +457,12 @@ Profile
 
 													<div class='label-post-date'>{{date('d M Y H:i', strtotime($staff->created_at))}}</div>
 													<div class='post-text'>{{ $staff->status }}</div>
-													<div class='post-image-profile'><img src="{{ $staff->image }}" class="post-image-size-profile"></div>
+													<div class='post-image-profile'>
+															@if (!is_null($staff->image))
+																	<img src="{{ asset($staff->image) }}" class="post-image-size-profile">
+															@endif
+													</div>
+													
 
 													@if ($staff->likes > 0)
 															<div class="like-count" id="thumbs{{ $staff->token }}">
@@ -510,7 +515,7 @@ Profile
 																				@endphp
 																				@elseif (!empty($photo->avatar))
 																				@php
-																						$avatar = $photo->avatar;
+																						$avatar = asset($photo->avatar);
 																				@endphp
 																				@endif
 
@@ -531,9 +536,10 @@ Profile
 																<div class='label-post-date'>{{date('d M Y H:i', strtotime($staff->created_at))}}</div>
 
 																<div class='post-text'>{{ $staff->status }}</div>
-
 																<div class='post-image-profile'>
-																		<img src="{{ $staff->image }}" class="post-image-size-profile">
+																		@if (!is_null($staff->image))
+																				<img src="{{ asset($staff->image) }}" class="post-image-size-profile">
+																		@endif
 																</div>
 
 																@if ($staff->likes > 0)
@@ -587,7 +593,7 @@ Profile
 																					@endphp
 																					@elseif (!empty($photo->avatar))
 																					@php
-																							$avatar = $photo->avatar;
+																							$avatar = asset($photo->avatar);
 																					@endphp
 																					@endif
 
@@ -607,9 +613,10 @@ Profile
 
 																	<div class='label-post-date'>{{date('d M Y H:i', strtotime($staff->created_at))}}</div>
 																	<div class='post-text'>{{$staff->status}}</div>
-
 																	<div class='post-image-profile'>
-																			<img src="{{ $staff->image }}" class="post-image-size-profile">
+																			@if (!is_null($staff->image))
+																					<img src="{{ asset($staff->image) }}" class="post-image-size-profile">
+																			@endif
 																	</div>
 
 																	@if ($staff->likes > 0)

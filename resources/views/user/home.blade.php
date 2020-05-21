@@ -33,7 +33,7 @@ Dashboard
 									@foreach ($profile as $data)
 											@if (!empty($data->avatar))
 													<div class="card-img-profile">
-														<img src="{{ $data->avatar }}" class="img-thumb">
+														<img src="{{ asset($data->avatar) }}" class="img-thumb">
 													</div>		
 
 											@elseif (empty($data->avatar))
@@ -100,7 +100,7 @@ Dashboard
 																			@endphp
 																			@elseif (!empty($photo->avatar) && $photo->id === $fiend->bridge)
 																			@php
-																					$avatar = $photo->avatar;
+																					$avatar = asset($photo->avatar);
 																			@endphp
 																			@endif	
 																	@endforeach
@@ -123,7 +123,7 @@ Dashboard
 																			@endphp
 																			@elseif (!empty($photo->avatar) && $photo->id === $fans->id)
 																			@php
-																					$avatar = $photo->avatar;
+																					$avatar = asset($photo->avatar);
 																			@endphp
 																			@endif	
 																	@endforeach						
@@ -165,7 +165,7 @@ Dashboard
 																			@endphp
 																	@else
 																	@php
-																			$avatar = $friend->avatar;
+																			$avatar = asset($friend->avatar);
 																	@endphp
 																	@endif
 																	<div class="col-friend small-box">
@@ -212,7 +212,7 @@ Dashboard
 														<span class="span-upload-filename"> No image selected</span>										
 												</label>
 
-												<input class="btn-upload" type="file" name="photos" id="upload">
+												<input class="btn-upload" type="file" name="photos" id="upload" accept="image/*;capture=camera">
 										</div>
 
 										<input class="btn btn-primary" type="submit" value="Share">
@@ -279,7 +279,7 @@ Dashboard
 																
 																@elseif (!empty($photo->avatar) && $photo->id === $family->bridge)
 																		@php
-																				$avatar = $photo->avatar;
+																				$avatar = asset($photo->avatar);
 																		@endphp
 																@endif	
 														@endforeach
@@ -307,10 +307,13 @@ Dashboard
 																							{{ date('d M Y H:i', strtotime($staff->created_at)) }}
 																					</div>
 
-																					<div class='post-text'>{{ $staff->status }}</div>	
+																					<div class='post-text'>{{ $staff->status }}</div>										
 																					<div class='post-image'>
-																							<img src="{{ $staff->image }}" class="post-image-size">
+																							@if (!is_null($staff->image))
+																									<img src="{{ asset($staff->image) }}" class="post-image-size">
+																							@endif
 																					</div>	
+																					
 
 																					@if ($staff->likes > 0)
 																							<div class="like-count" id="thumbs{{ $staff->token }}">
@@ -357,7 +360,7 @@ Dashboard
 
 																	@if (!empty($photo->avatar) && $photo->id === $family->id)
 																			@php
-																					$avatar = $photo->avatar;
+																					$avatar = asset($photo->avatar);
 																			@endphp
 																	@endif	
 															@endforeach
@@ -386,8 +389,10 @@ Dashboard
 
 																					<div class='post-text'>{{ $staff->status }}</div>	
 																					<div class='post-image'>
-																							<img src="{{ $staff->image }}" class="post-image-size">
-																					</div>		
+																							@if (!is_null($staff->image))
+																									<img src="{{ asset($staff->image) }}" class="post-image-size">
+																							@endif
+																					</div>	
 
 																					@if ($staff->likes > 0)
 																							<div class="like-count" id="thumbs{{ $staff->token }}">
@@ -429,7 +434,7 @@ Dashboard
 
 													@if (!empty($photo->avatar) && $photo->id === $id)
 															@php
-																	$avatar = $photo->avatar;
+																	$avatar = asset($photo->avatar);
 															@endphp
 													@endif	
 											@endforeach
@@ -456,9 +461,10 @@ Dashboard
 
 																	<div class='label-post-date'>{{date('d M Y H:i', strtotime($staff->created_at))}}</div>
 																	<div class='post-text'>{{$staff->status}}</div>
-
 																	<div class='post-image'>
-																			<img src="{{ $staff->image }}" class="post-image-size">
+																			@if (!is_null($staff->image))
+																					<img src="{{ asset($staff->image) }}" class="post-image-size">
+																			@endif
 																	</div>
 
 																	@if ($staff->likes > 0)

@@ -26,7 +26,7 @@ class StatusRequest extends FormRequest
         return [
             'status'    => 'nullable|max:5000|regex:/^[a-zA-Z0-9\-\@\#\.\,\_\+\-\?\!\/ ]*$/',
             'capture'   => 'required|min:25',
-            'photos'    => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'photos'    => 'image|mimes:jpeg,png,jpg,gif|max:10240',
         ];
     }
 

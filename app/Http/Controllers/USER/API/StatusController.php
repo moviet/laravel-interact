@@ -43,7 +43,7 @@ class StatusController extends Controller
                 $name = Carbon::now()->toDateString().'-'.$this->uin().'.'.$file->getClientOriginalExtension();
 
                 $file->move(public_path('/img-status/'), $name);
-                $getImage = '/img-status/' . $name;
+                $getImage = '/img-status/' . strtolower($name);
 
                 $post->store($auth, $request, $getImage, $this->uin());
 
