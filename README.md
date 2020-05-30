@@ -12,9 +12,9 @@ Please free configure .env your app and run the command like below
 * **Fork** this repository for new update
 *  Open your command line and move to the local path you want to install 
 * **Clone** ~ [https://github.com/moviet/laravel-interact.git](https://github.com/moviet/laravel-interact.git)
-*  create new database
-* **update** ~ `composer install/update`
-* **install** ~ `composer require laravel/ui`
+*  create new database name
+*  setting .env for your database
+* **update** ~ `composer update`
 *  composer dump-autoload
 *  php artisan optimize
 *  php artisan [migrate:refresh --seed](https://github.com/moviet/laravel-interact)
