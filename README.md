@@ -72,7 +72,7 @@ After you create migration, please ensure your database like below
 - Etc
 
 ## Custom API
-You don't need to run basic _api_ like eg. [http://localhost/api/](#custom-features) please see [here](https://github.com/moviet/interact/tree/master/routes) or 
+You don't need to run basic _api_ like eg. [http://localhost/api/](#custom-features) please see [here](https://github.com/moviet/laravel-interact/tree/master/routes) or 
 
 > *php artisan route:list*
 
