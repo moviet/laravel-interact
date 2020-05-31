@@ -23,7 +23,8 @@ $(function() {
 							dataType: 'json',
 							success: function (data) {	
 									if (data.alerts == 'success') {			
-											console.log(data);					
+											console.log(data);		
+
 											$('#alert').find('#new-alert').addClass('alert-green').html(data.msg);
 											profile_alerts.show();								
 											$('#photo-profile').attr('src', data.send);
@@ -32,6 +33,7 @@ $(function() {
 							error: function(data) {
 									var response = JSON.parse(data.responseText);
 									console.log(data);
+
 									$('#alert').find('#new-alert').addClass('alert-red').text(response.errors.profile[0]);
 									profile_alerts.show();
 							}
@@ -64,5 +66,10 @@ $(function() {
 						scrollLeft: '+=100'
 					}, 300, 'swing');
 
+			});
+
+			$('.label-delete-profile').on('click', function(e) {
+					e.preventDefault();
+					document.getElementById('remove-photo-profile').submit();
 			});
 });

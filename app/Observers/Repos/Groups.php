@@ -30,4 +30,9 @@ class Groups
             
         ], $data->validated());
     }
+
+    public function destroy($data)
+    {
+        return Friend::where('token', $data)->limit(1)->delete();
+    }
 }

@@ -11,6 +11,11 @@ class Profile
         return ProScope::where($profileId, $id)->limit(1)->get();
     }
 
+    public static function findByFirstId($profileId, int $id)
+    {
+        return ProScope::where($profileId, $id)->first();
+    }
+
     public static function findByName($firstName, $lastName)
     {
         return ProScope::where('name', 'LIKE', "%$firstName%")->orWhere('name', 'LIKE', "%$lastName%")->get();

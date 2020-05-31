@@ -24,14 +24,14 @@ class PhotoProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'profile'  => 'image|mimes:jpeg,png,jpg|max:10240',
+            'detect'  => 'nullable',
+            'profile'  => 'nullable|mimes:jpeg,png,jpg|image|max:10240',
         ];
     }
 
     public function messages()
     {
         return [
-            'profile.image' => 'Invalid image extension',
             'profile.mimes' => 'Invalid image extension',       
         ];
     }

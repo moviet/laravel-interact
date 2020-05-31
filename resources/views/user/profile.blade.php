@@ -1,18 +1,18 @@
 @extends('layouts.default')
+
 @section('title') 
 Profile
 @endsection
 
 @section('media')
-		<script type="text/javascript" src="{{ asset('/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('/js/search.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('/js/flag-profile.js') }}" async></script>
-		<script type="text/javascript" src="{{ asset('/js/profiler.js') }}" async></script>
+<script type="text/javascript" src="{{ asset('/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/search.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/flag-profile.js') }}" async></script>
+<script type="text/javascript" src="{{ asset('/js/profiler.js') }}" async></script>
 @endsection
 
 @section('css')
-		<link rel="stylesheet" type="text/css" href="{{ asset('/vendor/bootstrap/css/bootstrap.min.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('/css/content.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/css/content.css') }}">
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@ Profile
 		<div class="content-profile">
 
 				<div class="map-url">
-						<a href="/home/{{Auth::user()->uid}}" class="map-url-dashboard">Dashboard &#9829;</a> <span class="map-url-link">Profile</span>
+						<a href="{{ url('home', Auth::user()->uid) }}" class="map-url-dashboard">Dashboard &#9829;</a> <span class="map-url-link">Profile</span>
 				</div>
 
 				@inject ('likes','App\Scopes\Likeable')
@@ -48,34 +48,52 @@ Profile
 						<div class="card h-110">		
 								<div class="card-body">
 
-										@if ($id === $admin)
-												<div class="edit-profile" title="Change Photo Profile">
-														<label class="label-upload-profile" for="profile">
-																<img src="{{ asset('/img/edit.png') }}" class="edit-thumb">
-																<input class="profile-upload" type="file" name="profile" id="profile" accept="image/*;capture=camera">
-														</label>
-												</div>
-										@endif
+										{{-- EDIT AND DELETE PHOTO PROFILE --}}
+										@if ($profile->id === $id)
+												@if ($id === $admin)
+														<form method="post" action='{{ route('photo.remove') }}' id="remove-photo-profile">
+																<div class="erase-profile" title="Remove Photo Profile">
+																		<label class="{{ !empty($profile->avatar) ? 'label-delete-profile' : 'label-action-profile'}}">
+																				<img src="{{ asset('/img/edit.png') }}" class="edit-thumb">
+																				<input type="hidden" name="detect" value="{{null}}">
+																				@csrf
+																		</label>
+																</div>
+														</form>
 
-										@foreach ($profile as $data)
-												@if ($data->id === $id)
-														@if (!empty($data->avatar))
+														@if (file_exists(substr($profile->avatar, 1)))
 																<div class="card-img-profile">
-																	<img src="{{ asset($data->avatar) }}" class="img-thumb" id="photo-profile">
+																		<label for="profile" style="cursor: pointer;">
+																				<img src="{{ asset($profile->avatar) }}" class="img-thumb" id="photo-profile">
+																				<input class="profile-upload" type="file" name="profile" id="profile" accept="image/*;capture=camera">
+																		</label>
 																</div>																
 														@else
 																<div class="card-img-profile">
-																		<img src="{{ asset('/img/profile.png') }}" class="img-thumb">
+																		<label for="profile" style="cursor: pointer;">
+																				<img src="{{ asset('/img/profile.png') }}" class="img-thumb" id="photo-profile">
+																				<input class="profile-upload" type="file" name="profile" id="profile" accept="image/*;capture=camera">
+																		</label>
 																</div>
-														@endif	
-
-														<div class="title-profile text-center">{{ $parse->fully($data->name) }}</div>
+														@endif
+												@else
+														@if (file_exists(substr($profile->avatar, 1)))
+																<div class="card-img-profile">
+																		<img src="{{ asset($profile->avatar) }}" class="img-thumb" id="photo-profile">
+																</div>																
+														@else
+																<div class="card-img-profile">
+																		<img src="{{ asset('/img/profile.png') }}" class="img-thumb" id="photo-profile">
+																</div>
+														@endif
 												@endif
-										@endforeach
+												<div class="title-profile text-center">{{ $parse->fully($profile->name) }}</div>
+										@endif
 
+										{{-- PROFILE AND FRIENDSHIP BADGE --}}
 										@if ($id === $admin)
 												<div class="friend-profile-link text-center">
-														<img src="{{ asset('/img/heart.png') }}" class="img-friend-link">{{ $parse->cutSmall($data->name) }}
+														<img src="{{ asset('/img/heart.png') }}" class="img-friend-link">{{ $parse->cutSmall($profile->name) }}
 												</div>
 										@endif
 					
@@ -104,7 +122,7 @@ Profile
 												@foreach ($group as $fans)
 														@if ($id !== $admin && $fans->id === $admin && $fans->bridge === $id)
 																<div class="friend-profile-link tx-center">
-																		<img src="{{ asset('/img/heart.png') }}" class="img-friend-link">{{ $parse->cutSmall($data->name) }}
+																		<img src="{{ asset('/img/heart.png') }}" class="img-friend-link">{{ $parse->cutSmall($profile->name) }}
 																</div>
 														@endif
 												@endforeach
@@ -114,7 +132,7 @@ Profile
 												@foreach ($friend as $fans)
 														@if ($id !== $admin && $fans->bridge === $admin && $fans->id === $id)
 																<div class="friend-profile-link tx-center">
-																		<img src="{{ asset('/img/heart.png') }}" class="img-friend-link">{{ $parse->cutSmall($data->name) }}
+																		<img src="{{ asset('/img/heart.png') }}" class="img-friend-link">{{ $parse->cutSmall($profile->name) }}
 																</div>
 														@endif
 												@endforeach
@@ -122,7 +140,7 @@ Profile
 								
 										@if ($id !== $admin && empty(count($links)) && empty(count($gates)) && empty(count($group)) && empty(count($friend)))
 												<form method='POST' action='{{ route('friend.store') }}'>
-														<input type='hidden' name="name" value='{{ $data->name }}'>
+														<input type='hidden' name="name" value='{{ $profile->name }}'>
 														<input type='hidden' name="id" value='{{ $id }}'>
 														@csrf
 														<input type="submit" value="Add as friend" class="btn contact-link text-center">
@@ -158,8 +176,22 @@ Profile
 																<div class="row-friend-scroll" id="new-friend">
 																		@foreach ($pull as $fiend)			
 																				<div class="col-friend-profile small-box">
-																							<a href="{{  route('user.show', ['user' => $fiend->id]) }}">
-																									<img src="{{ asset('/img/friend.png') }}" class="img-thumbs">
+																							<a href="{{ route('user.show', ['user' => $fiend->id]) }}">
+
+																									@foreach ($finder as $photo)	
+																											@if ($photo->id === $fiend->id && file_exists(substr($photo->avatar, 1)))
+																													@php
+																															$avatar = asset($photo->avatar);
+																													@endphp
+																											@elseif ($photo->id === $fiend->id && !file_exists(substr($photo->avatar, 1)))
+																													@php
+																															$avatar = asset('/img/friend.png');
+																													@endphp
+																											@endif
+																									@endforeach
+
+																									<img src="{{ $avatar }}" class="img-thumbs">
+																									
 																									<label class="label-as-friend"><span class="icon-heart">&#10084;</span> {{ $parse->cutSmall($fiend->name) }}
 																									</label>
 																							</a>
@@ -185,8 +217,22 @@ Profile
 																@foreach ($push as $fiend)	
 																<div class="col-friend-profile small-box">
 																	<a href="{{ route('user.show', ['user' => $fiend->bridge]) }}">
-																		<img src="{{ asset('/img/friend.png') }}" class="img-thumbs">
-																		<label class="label-as-friend"><span class="icon-heart">&#10084;</span> {{ $parse->cutSmall($fiend->adds) }}</label>
+
+																			@foreach ($finder as $photo)	
+																					@if ($photo->id === $fiend->bridge && file_exists(substr($photo->avatar, 1)))
+																							@php
+																									$avatar = asset($photo->avatar);
+																							@endphp
+																					@elseif ($photo->id === $fiend->bridge && !file_exists(substr($photo->avatar, 1)))
+																							@php
+																									$avatar = asset('/img/friend.png');
+																							@endphp
+																					@endif
+																			@endforeach
+
+																			<img src="{{ $avatar }}" class="img-thumbs">
+
+																			<label class="label-as-friend"><span class="icon-heart">&#10084;</span> {{ $parse->cutSmall($fiend->adds) }}</label>
 																	</a>
 																</div>
 																@endforeach	
@@ -226,18 +272,18 @@ Profile
 
 																						@if ($fans->id === $id && $fans->bridge !== $id)		
 																								@if ($photo->id === $fans->bridge)			
-																										@if (empty($photo->avatar))
-																												@php
-																														$avatar = asset('/img/friend.png');
-																												@endphp
-																										@elseif (!empty($photo->avatar))
+																										@if (file_exists(substr($photo->avatar, 1)))
 																												@php
 																														$avatar = asset($photo->avatar);
+																												@endphp
+																										@elseif (!file_exists(substr($photo->avatar, 1)))
+																												@php
+																														$avatar = asset('/img/friend.png');
 																												@endphp
 																										@endif	
 
 																										<div class="col-friend-profile small-box">
-																												<a href="{{  route('user.show', ['user' => $fans->bridge]) }}">
+																												<a href="{{ route('user.show', ['user' => $fans->bridge]) }}">
 																														<img src="{{ $avatar }}" class="img-thumbs">
 																														<div class="label-friend text-center">
 																																<span class="icon-heart">&#10084;</span> {{ $parse->cutSmall($fans->adds) }}
@@ -257,13 +303,13 @@ Profile
 																									
 																						@if ($fans->bridge === $id && $fans->id !== $id)	
 																								@if ($photo->id === $fans->id)	
-																										@if (empty($photo->avatar))
-																												@php
-																														$avatar = asset('/img/friend.png');
-																												@endphp
-																										@elseif (!empty($photo->avatar))
+																										@if (file_exists(substr($photo->avatar, 1)))
 																												@php
 																														$avatar = asset($photo->avatar);
+																												@endphp
+																										@elseif (!file_exists(substr($photo->avatar, 1)))
+																												@php
+																														$avatar = asset('/img/friend.png');
 																												@endphp
 																										@endif
 																												
@@ -299,12 +345,12 @@ Profile
 						<div class="margin-item">
 								<div class="card h-100">
 										<div class="card-body">
-												<div class="label-top"><a href="/search" class="label-top-link">Find A Friend</a></div>
+												<div class="label-top"><a href="{{ url('/search') }}" class="label-top-link">Find A Friend</a></div>
 												<div class="row-friend-scroll" id="find-friend">
 														@foreach ($finder as $fiend)					
 																<div class="col-friend-profile">
-																		<a href="{{  route('user.show', ['user' => $fiend->id]) }}">
-																			<img src="{{ $fiend->avatar ? asset($fiend->avatar) : asset('/img/friend.png') }}" class="img-thumbs">
+																		<a href="{{ route('user.show', ['user' => $fiend->id]) }}">
+																			<img src="{{ (!empty($fiend->avatar) && file_exists(substr($fiend->avatar, 1))) ? asset($fiend->avatar) : asset('/img/friend.png') }}" class="img-thumbs">
 																			<div class="label-friend text-center"><span class="icon-heart">&#10084;</span> {{ $parse->cutSmall($fiend->name) }}</div>
 																		</a>
 																</div>										
@@ -429,27 +475,25 @@ Profile
 															</a>
 													</div>
 
-													@foreach ($profile as $photo)							
-															@if ($photo->id === $id)							
-																	@if (empty($photo->avatar))
-																	@php
-																			$avatar = asset('/img/friend.png');
-																	@endphp
-																	@elseif (!empty($photo->avatar))
-																	@php
-																			$avatar = asset($photo->avatar);
-																	@endphp
-																	@endif
-
-																	<div class='label-group'>
-																			<div class='label-photo'>
-																					<a href="{{ route('user.show', ['user' => $staff->id]) }}">
-																							<img src="{{ $avatar }}" class="img-photo">
-																					</a>
-																			</div>
-																	</div>						
+													@if ($profile->id === $id)							
+															@if (file_exists(substr($profile->avatar, 1)))
+															@php
+																	$avatar = asset($profile->avatar);
+															@endphp
+															@elseif (!file_exists(substr($profile->avatar, 1)))
+															@php
+																	$avatar = asset('/img/friend.png');
+															@endphp
 															@endif
-													@endforeach
+
+															<div class='label-group'>
+																	<div class='label-photo'>
+																			<a href="{{ route('user.show', ['user' => $staff->id]) }}">
+																					<img src="{{ $avatar }}" class="img-photo">
+																			</a>
+																	</div>
+															</div>						
+													@endif
 
 													<a href="{{ route('user.show', ['user' => $staff->id]) }}">
 															<div class='label-post'>{{$staff->name }}</div>
@@ -458,8 +502,11 @@ Profile
 													<div class='label-post-date'>{{date('d M Y H:i', strtotime($staff->created_at))}}</div>
 													<div class='post-text'>{{ $staff->status }}</div>
 													<div class='post-image-profile'>
-															@if (!is_null($staff->image))
-																	<img src="{{ asset($staff->image) }}" class="post-image-size-profile">
+															@if (!empty($staff->image) && file_exists(substr($staff->image, 1)))
+																	<img src="{{ asset($staff->image) }}" class="post-image-size">
+
+															@elseif (!empty($staff->image) && !file_exists(substr($staff->image, 1)))
+																	<img src="{{ asset('/img/not-found.png') }}" class="post-image-size">
 															@endif
 													</div>
 													
@@ -507,27 +554,25 @@ Profile
 																		<label class="btn btn-outline-info">&#9903;</label>
 																</div>
 
-																@foreach ($profile as $photo)							
-																		@if ($photo->id === $fans->bridge)							
-																				@if (empty($photo->avatar))
-																				@php
-																						$avatar = asset('/img/friend.png');
-																				@endphp
-																				@elseif (!empty($photo->avatar))
-																				@php
-																						$avatar = asset($photo->avatar);
-																				@endphp
-																				@endif
-
-																				<div class='label-group'>
-																						<div class='label-photo'>
-																								<a href="{{ route('user.show', ['user' => $staff->id]) }}">
-																										<img src="{{ $avatar }}" class="img-photo">
-																								</a>
-																						/div>
-																				</div>
+																@if ($profile->id === $fans->bridge)							
+																		@if (file_exists(substr($profile->avatar, 1)))
+																		@php
+																				$avatar = asset($profile->avatar);
+																		@endphp
+																		@elseif (!file_exists(substr($profile->avatar, 1)))
+																		@php
+																				$avatar = asset('/img/friend.png');
+																		@endphp
 																		@endif
-																@endforeach
+
+																		<div class='label-group'>
+																				<div class='label-photo'>
+																						<a href="{{ route('user.show', ['user' => $staff->id]) }}">
+																								<img src="{{ $avatar }}" class="img-photo">
+																						</a>
+																				</div>
+																		</div>
+																@endif
 
 																<a href="{{ route('user.show', ['user' => $staff->id]) }}">
 																		<div class='label-post'>{{ $staff->name }}</div>
@@ -537,8 +582,11 @@ Profile
 
 																<div class='post-text'>{{ $staff->status }}</div>
 																<div class='post-image-profile'>
-																		@if (!is_null($staff->image))
-																				<img src="{{ asset($staff->image) }}" class="post-image-size-profile">
+																		@if (!empty($staff->image) && file_exists(substr($staff->image, 1)))
+																				<img src="{{ asset($staff->image) }}" class="post-image-size">
+
+																		@elseif (!empty($staff->image) && !file_exists(substr($staff->image, 1)))
+																				<img src="{{ asset('/img/not-found.png') }}" class="post-image-size">
 																		@endif
 																</div>
 
@@ -585,27 +633,25 @@ Profile
 																			<label class="btn btn-outline-info">&#9903;</label>
 																	</div>
 
-																	@foreach ($profile as $photo)							
-																			@if ($photo->id === $fans->id)							
-																					@if (empty($photo->avatar))
-																					@php
-																							$avatar = asset('/img/friend.png');
-																					@endphp
-																					@elseif (!empty($photo->avatar))
-																					@php
-																							$avatar = asset($photo->avatar);
-																					@endphp
-																					@endif
-
-																					<div class='label-group'>
-																							<div class='label-photo'>
-																									<a href="{{ route('user.show', ['user' => $staff->id]) }}">
-																											<img src="{{ $avatar }}" class="img-photo">
-																									</a>
-																							</div>
-																					</div>
+																	@if ($profile->id === $fans->id)							
+																			@if (file_exists(substr($profile->avatar, 1)))
+																			@php
+																					$avatar = asset($profile->avatar);
+																			@endphp
+																			@elseif (!file_exists(substr($profile->avatar, 1)))
+																			@php
+																					$avatar = asset('/img/friend.png');
+																			@endphp
 																			@endif
-																	@endforeach
+
+																			<div class='label-group'>
+																					<div class='label-photo'>
+																							<a href="{{ route('user.show', ['user' => $staff->id]) }}">
+																									<img src="{{ $avatar }}" class="img-photo">
+																							</a>
+																					</div>
+																			</div>
+																	@endif
 
 																	<a href="{{ route('user.show', ['user' => $staff->id]) }}">
 																			<div class='label-post'>{{$staff->name }}</div>
@@ -614,8 +660,11 @@ Profile
 																	<div class='label-post-date'>{{date('d M Y H:i', strtotime($staff->created_at))}}</div>
 																	<div class='post-text'>{{$staff->status}}</div>
 																	<div class='post-image-profile'>
-																			@if (!is_null($staff->image))
-																					<img src="{{ asset($staff->image) }}" class="post-image-size-profile">
+																			@if (!empty($staff->image) && file_exists(substr($staff->image, 1)))
+																					<img src="{{ asset($staff->image) }}" class="post-image-size">
+				
+																			@elseif (!empty($staff->image) && !file_exists(substr($staff->image, 1)))
+																					<img src="{{ asset('/img/not-found.png') }}" class="post-image-size">
 																			@endif
 																	</div>
 

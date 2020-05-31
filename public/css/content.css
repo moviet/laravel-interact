@@ -733,7 +733,7 @@ textarea.form-control-status:focus, textarea.form-control-status:before {
   display: block;
 }
 
-.edit-profile {
+.erase-profile {
   width: auto;
   padding: 0 5px;
   position: absolute;
@@ -763,7 +763,15 @@ textarea.form-control-status:focus, textarea.form-control-status:before {
   background-color: none;
 }
 
-.label-upload-profile {
+.label-delete-profile {
+  width: 24px;
+  height: 10px;
+  display: inline-block;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.label-action-profile {
   width: 24px;
   height: 10px;
   display: inline-block;

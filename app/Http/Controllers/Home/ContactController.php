@@ -8,7 +8,7 @@ use App\Bubble\Core\Ruin;
 use Illuminate\Support\Str;
 use App\Bubble\Core\Identicated;
 use App\Http\Controllers\Controller;
-// use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller

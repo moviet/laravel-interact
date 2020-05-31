@@ -2,12 +2,9 @@
 
 namespace App\Observers\Forks;
 
-// use Illuminate\Support\Str;
-// use Illuminate\Http\Request;
 use App\Scopes\Profile as Users;
 use App\Observers\Repos\Profile;
 use App\Bubble\Core\Identicated;
-// use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class Authenticable
@@ -27,7 +24,7 @@ class Authenticable
             $this->profiles();
         }
 
-        $token = session([
+        session([
             $this->tokenId   => base64_encode($this->validate()),
         ]);
         

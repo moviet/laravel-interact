@@ -1,90 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Notify Responder</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Notify Responder</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<style type="text/css">
+img {
+    max-width: 600px;
+    outline: none;
+    text-decoration: none;
+    -ms-interpolation-mode: bicubic;
+}
 
-    <style type="text/css">
-    img {
-        max-width: 600px;
-        outline: none;
-        text-decoration: none;
-        -ms-interpolation-mode: bicubic;
-    }
+a {
+    text-decoration: none;
+    border: 0;
+    outline: none;
+    color: #bbbbbb;
+}
 
-    a {
-        text-decoration: none;
-        border: 0;
-        outline: none;
-        color: #bbbbbb;
-    }
+a img {
+    border: none;
+}
 
-    a img {
-        border: none;
-    }
+/* General styling */
+td, h1, h2, h3  {
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-weight: 400;
+}
 
-    /* General styling */
-    td, h1, h2, h3  {
-        font-family: 'Helvetica', Arial, sans-serif;
-        font-weight: 400;
-    }
+td {
+    text-align: center;
+}
 
-    td {
-        text-align: center;
-    }
+body {
+    -webkit-font-smoothing:antialiased;
+    -webkit-text-size-adjust:none;
+    width: 100%;
+    height: 100%;
+    color: #37302d;
+    background: #ffffff;
+    font-size: 16px;
+}
 
-    body {
-        -webkit-font-smoothing:antialiased;
-        -webkit-text-size-adjust:none;
-        width: 100%;
-        height: 100%;
-        color: #37302d;
-        background: #ffffff;
-        font-size: 16px;
-    }
+table {
+    border-collapse: collapse !important;
+}
 
-    table {
-        border-collapse: collapse !important;
-    }
+.headline {
+    color: #ffffff;
+    font-size: 36px;
+}
 
-    .headline {
-        color: #ffffff;
-        font-size: 36px;
-    }
+.force-full-width {
+    width: 100% !important;
+}
 
-    .force-full-width {
-        width: 100% !important;
-    }
+.step-width {
+    width: 110px;
+    height: 111px;
+}
+</style>
 
-    .step-width {
-        width: 110px;
-        height: 111px;
-    }
-    </style>
-
-    <style type="text/css" media="screen">
-        @media screen {
-            td, h1, h2, h3 {
-              font-family: 'Droid Sans', 'Helvetica Neue', 'Arial', 'sans-serif' !important;
-            }
+<style type="text/css" media="screen">
+    @media screen {
+        td, h1, h2, h3 {
+            font-family: 'Droid Sans', 'Helvetica Neue', 'Arial', 'sans-serif' !important;
         }
-    </style>
+    }
+</style>
 
-    <style type="text/css" media="only screen and (max-width: 480px)">
-        @media only screen and (max-width: 480px) {
+<style type="text/css" media="only screen and (max-width: 480px)">
+    @media only screen and (max-width: 480px) {
 
-            table[class="w320"] {
-                width: 320px !important;
-            }
-
-            img[class="step-width"] {
-                width: 80px !important;
-                height: 81px !important;
-            }
+        table[class="w320"] {
+            width: 320px !important;
         }
-    </style>
+
+        img[class="step-width"] {
+            width: 80px !important;
+            height: 81px !important;
+        }
+    }
+</style>
 </head>
 
 <body class="body" style="padding:0; margin:0; display:block; background:#ffffff; -webkit-text-size-adjust:none" bgcolor="#ffffff">
@@ -128,7 +127,7 @@
                                                   <w:anchorlock/>
                                                   <center>
                                                 <![endif]-->
-                                                <a href="{{ route('home.what') }}" style="background-color:#178f8f;border-radius:4px;color:#ffffff;display:inline-block;font-family:Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:50px;text-align:center;text-decoration:none;width:200px;-webkit-text-size-adjust:none;">Welcome</a>
+                                                <a href="{{ route('index.home') }}" style="background-color:#178f8f;border-radius:4px;color:#ffffff;display:inline-block;font-family:Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:50px;text-align:center;text-decoration:none;width:200px;-webkit-text-size-adjust:none;">Welcome</a>
                                                 <!--[if mso]>
                                                   </center>
                                                 </v:roundrect>
@@ -144,7 +143,7 @@
                                     <tr>
                                         <td style="padding-top:10px;">
                                             <label style="color:#dddddd; font-size:12px; font-weight:300; font-family:Segoe UI;">
-                                                <a href="{{ route('home.what') }}">View in browser</a> | <a href="{{ route('home.what') }}">Unsubscribe</a> | <a href="{{ route('home.what') }}">Contact</a>
+                                                <a href="{{ route('index.home') }}">View in browser</a> | <a href="{{ route('index.home') }}">Unsubscribe</a> | <a href="{{ route('index.contact') }}">Contact</a>
                                                 <br><br>
                                             </label>
                                         </td>

@@ -8,6 +8,11 @@ use App\Models\Network\Profile As Cycles;
 
 class Profile
 {
+    public function show()
+    {
+        return Cycles::where('id', Auth::user()->uid)->first();
+    }
+
     public function store()
     {
         return Cycles::create([

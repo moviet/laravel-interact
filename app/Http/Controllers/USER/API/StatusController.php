@@ -5,8 +5,10 @@ namespace App\Http\Controllers\USER\API;
 use Carbon\Carbon;
 use App\Bubble\Core\Ruin;
 use App\Bubble\Core\Authorizm;
+use App\Scopes\Likeable as Like;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\User\StatusRequest;
 use App\Observers\Repos\Posting as Post;
 
@@ -40,10 +42,10 @@ class StatusController extends Controller
         } else {
             if ($request->hasFile('photos')) {
                 $file = $request->file('photos');
-                $name = Carbon::now()->toDateString().'-'.$this->uin().'.'.$file->getClientOriginalExtension();
+                $name = 'interact-'.Carbon::now()->toDateString().'-'.$this->uin().'.'.$file->getClientOriginalExtension();
 
-                $file->move(public_path('/img-status/'), $name);
-                $getImage = '/img-status/' . strtolower($name);
+                $file->move(public_path('/img-status/'), strtolower($name));
+                $getImage = '/img-status/' . $name;
 
                 $post->store($auth, $request, $getImage, $this->uin());
 
@@ -72,7 +74,7 @@ class StatusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function remove(int $id, $data, $token, Post $post)
+    public function remove(int $id, $data, $token, Post $post, Like $like)
     {
         if ($id !== Auth::user()->uid) {
             return redirect()->back();
@@ -82,7 +84,16 @@ class StatusController extends Controller
             return redirect()->back();
         }
 
+        // Just cleaning public storage for demo
+        $checkImage = $post->show($data); 
+        $imagePath = $checkImage->image;
+
+        if (!is_null($imagePath)) {
+            File::delete(public_path($imagePath));
+        }
+
         $post->destroy($id, $data);
+        $like->destroy($data);        
 
         return redirect()->back();
     }

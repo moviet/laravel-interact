@@ -54,7 +54,7 @@ class DashboardController extends Controller
         // Member
         $finder = $hub->findByAll();
         $finderLimit = $hub->findByLimitFriend();
-        $profile = $hub->findById($this->identify, $id);
+        $profile = $hub->findByFirstId($this->identify, $id);
 
         // Friendship
         $groupId = $group->findFriendByGroupId($id);   

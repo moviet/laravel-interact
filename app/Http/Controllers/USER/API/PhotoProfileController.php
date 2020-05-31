@@ -7,6 +7,7 @@ use App\Bubble\Core\Ruin;
 use App\Bubble\Core\Authorizm;
 use App\Observers\Repos\Profile;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\User\PhotoProfileRequest;
 
 class PhotoProfileController extends Controller
@@ -33,11 +34,18 @@ class PhotoProfileController extends Controller
      */
     public function store(PhotoProfileRequest $request, Profile $profile)
     {
-        $file = $request->file('profile');
-        $name = Carbon::now()->toDateString().'-'.$this->uin().'.'.$file->getClientOriginalExtension();
+        $checkImage = $profile->show();
+        $imagePath = $checkImage->avatar;
 
-        $file->move(public_path('/img-profile/'), $name);
-        $getImage = '/img-profile/' . strtolower($name);
+        if (!is_null($imagePath)) {
+            File::delete(public_path($imagePath));
+        }
+
+        $file = $request->file('profile');
+        $name = 'interact-'.Carbon::now()->toDateString().'-'.$this->uin().'.'.$file->getClientOriginalExtension();
+
+        $file->move(public_path('/img-profile/'), strtolower($name));
+        $getImage = '/img-profile/' . $name;
         $load = $profile->update($request, $getImage);
 
         if ($load) {
@@ -54,5 +62,19 @@ class PhotoProfileController extends Controller
                 'send'      => 'failed',
             ]);            
         } 
+    }
+
+    public function remove(PhotoProfileRequest $request, Profile $profile)
+    {
+        $checkImage = $profile->show();
+        $imagePath = $checkImage->avatar;
+
+        if (!is_null($imagePath)) {
+            File::delete(public_path($imagePath));
+        }
+
+        $profile->update($request, null);
+
+        return redirect()->back();
     }
 }

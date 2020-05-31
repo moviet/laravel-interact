@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Interact-Laravel'),
+    'name' => env('APP_NAME', 'Interact'),
 
     /*
     |--------------------------------------------------------------------------

@@ -10,7 +10,6 @@ use App\Observers\Repos\Groups As Friend;
 
 class InteractController extends Controller
 {
-    //use Identicated;
     /**
      * Store a newly created resource in storage.
      *

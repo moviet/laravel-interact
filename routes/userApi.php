@@ -14,4 +14,5 @@ Route::namespace('API')->group(function () {
     Route::apiResource('post/reflect', 'LikeableController')->only(['store']);    
     Route::apiResource('photo', 'PhotoProfileController')->only(['index']);    
     Route::apiResource('photo/post', 'PhotoProfileController')->only(['store']);
+    Route::post('photo/remove', 'PhotoProfileController@remove')->name('photo.remove');
 });

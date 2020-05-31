@@ -16,6 +16,11 @@ class Posting
         return $back;
     }
 
+    public function show($data)
+    {
+        return Post::where('token', $data)->limit(1)->first();
+    }
+
     public function store($auth, $data, $image = null, $token)
     {
         $data->authorize();

@@ -39,4 +39,9 @@ class Likeable
     {
         return Like::with('postings')->get();
     }
+
+    public function destroy($data)
+    {
+        return Like::where('token', $data)->delete();
+    }
 }

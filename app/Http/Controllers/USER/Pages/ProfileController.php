@@ -8,9 +8,7 @@ use App\Bubble\Core\Ruin;
 use App\Bubble\Core\UrlMap;
 use App\Scopes\Profile as Hub;
 use App\Bubble\Core\Authorizm;
-// use Illuminate\Http\Request;
 use App\Scopes\Approved as Acc;
-// use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
@@ -47,25 +45,24 @@ class ProfileController extends Controller
         $this->getToken();
         $token = session($this->token);
 
-        $profile = $hub->findById($this->identify, $id);
-
-        if (empty(count($profile))) {
-           return $this->backToUser();
-        }
-
+        // Profile
+        $profile = $hub->findByFirstId($this->identify, $id);
         $finder = $hub->findNotById($this->identify, $id);
         
+        // Approvals
         $gates = $acc->findFriendByWait($this->admin(),  $id); 
         $links = $acc->findFriendByApprove($this->admin(), $id); 
   
+        // Approvals
         $push = $acc->getWait($this->admin()); 
         $pull = $acc->getApproved($this->admin()); 
         
+        // Friend Group
         $group = $groups->findFriendById($this->admin(), $id); 
         $friend = $groups->findFriendByGates($this->admin(), $id); 
-        
         $circles = $groups->findFriendByGroup($id, $id);  
 
+        // Friend Posting
         $postAll = $posting->findIdByAll($id);
         $posts = $posting->findPostById($id);
 

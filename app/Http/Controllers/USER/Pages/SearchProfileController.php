@@ -3,16 +3,15 @@
 namespace App\Http\Controllers\USER\Pages;
 
 use App\Scopes\Profile;
-// use App\Bubble\Core\Ruin;
 use App\Bubble\Core\UrlMap;
 use App\Bubble\Core\Authorizm;
-// use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\SearchRequest;
 
 class SearchProfileController extends Controller
 {
     use Authorizm, UrlMap;
+    
     /**
      * Display a listing of the resource.
      *
